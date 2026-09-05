@@ -29,7 +29,7 @@
   .hero h1{font-size:clamp(34px,6vw,60px);letter-spacing:-.01em;max-width:18ch}
   .hero .lede{font-size:18px;color:var(--slate);max-width:62ch;margin:14px 0 8px}
   .route{margin:22px 0 0}
-  .route .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .route svg.m{display:none}
   .route svg{width:100%;height:auto;display:block}
   .route .lbl{font:600 13px var(--sans);fill:var(--ink)}
   .route .sub{font:400 12px var(--sans);fill:var(--slate)}
@@ -204,7 +204,11 @@
     .links{columns:1}
     .mini{display:block;overflow-x:auto;min-width:0}
     .tl li{grid-template-columns:54px 1fr}
-    .route .scroll svg{min-width:760px}
+    .route svg.d{display:none}
+    .route svg.m{display:block}
+    .route .lbl{font-size:12px}
+    .route .sub,.route .tick,.route .axis{font-size:10px}
+    .route .band{font-size:11px}
     .ibox input{width:22px;height:22px}
     .idea .t.tap{cursor:pointer}
     .idea{grid-template-columns:30px 1fr;gap:4px 10px}
@@ -222,14 +226,14 @@
   <div class="wrap">
     <h1>Oktoberfest, the Eiger, and a lake day in Zürich</h1>
     <p class="lede">Six of us, September 19–29, 2026. Four pages: a <b>list of ideas</b> for each stop, <b>one possible way</b> to arrange them, <b>what it all costs</b>, and <b>what to pack</b>. The stays and flights are booked; almost everything else is a proposal.</p>
-    <div class="route"><div class="scroll" aria-label="Elevation over the days of the trip: Tampa at sea level Sept 19, Munich 520 meters Sept 20–23, Grindelwald 1,034 meters Sept 23–27 with an optional Jungfraujoch visit at 3,454 meters, Zürich 408 meters Sept 27–29, home Sept 29">
-      <svg viewBox="0 0 1000 268" role="img">
+    <div class="route"><div aria-label="Elevation over the days of the trip: Tampa at sea level Sept 19, Munich 1,700 feet Sept 20–23, Grindelwald 3,400 feet Sept 23–27 with an optional Jungfraujoch visit at 11,330 feet, Zürich 1,340 feet Sept 27–29, home Sept 29">
+      <svg class="d" viewBox="0 0 1000 268" role="img">
         <defs><clipPath id="under"><path d="M40,215 C90,215 110,215 140,214 C170,211 190,205 240,202 C300,200 340,200 380,197 C420,192 450,178 490,170 C520,166 545,167 560,166 C580,160 590,60 600,40 C610,60 620,160 640,166 C670,168 700,168 720,168 C760,172 790,204 830,207 C870,209 900,209 940,212 C960,214 970,215 980,215 L980,224 L40,224 Z"/></clipPath></defs>
         <!-- subtle axes -->
         <line x1="34" y1="34" x2="34" y2="224" stroke="#C7D2DB" stroke-width="1"/>
         <line x1="34" y1="224" x2="980" y2="224" stroke="#C7D2DB" stroke-width="1"/>
                 <text class="axis" x="14" y="130" transform="rotate(-90 14 130)" text-anchor="middle">elevation</text>
-        <text class="tick" x="40" y="46">3,500 m</text>
+        <text class="tick" x="40" y="46">11,500 ft</text>
         <!-- shaded bands: where we sleep -->
         <g clip-path="url(#under)">
           <rect x="150" y="34" width="280" height="190" fill="#2457A6" opacity=".16"/>
@@ -246,13 +250,13 @@
         <circle cx="70" cy="215" r="4" fill="#17252F"/><circle cx="260" cy="201" r="4" fill="#2457A6"/><circle cx="520" cy="167" r="4" fill="#2E7D6B"/><circle cx="600" cy="40" r="4" fill="#C08A14"/><circle cx="860" cy="208" r="4" fill="#C08A14"/><circle cx="960" cy="214" r="4" fill="#17252F"/>
         <text class="lbl" x="50" y="200">Tampa · sea level</text>
         
-        <text class="lbl" x="215" y="186">Munich · 520 m</text>
+        <text class="lbl" x="215" y="186">Munich · 1,700 ft</text>
         
-        <text class="lbl" x="440" y="151">Grindelwald · 1,034 m</text>
+        <text class="lbl" x="440" y="151">Grindelwald · 3,400 ft</text>
         
-        <text class="lbl" x="612" y="38" fill="#C08A14">Jungfraujoch · 3,454 m</text>
+        <text class="lbl" x="612" y="38" fill="#C08A14">Jungfraujoch · 11,330 ft</text>
         <text class="sub" x="612" y="56">optional, if it's clear</text>
-        <text class="lbl" x="815" y="192">Zürich · 408 m</text>
+        <text class="lbl" x="815" y="192">Zürich · 1,340 ft</text>
         
         <text class="band" x="40" y="242">fly out</text>
         <text class="sub" x="40" y="258">Sat 19</text>
@@ -261,6 +265,37 @@
         <text class="sub" x="862" y="258" text-anchor="middle">Sun 27 – Tue 29</text>
         <text class="band" x="980" y="242" text-anchor="end">home</text>
         <text class="sub" x="980" y="258" text-anchor="end">Tue 29</text>
+      </svg>
+      <svg class="m" viewBox="0 0 400 278" role="img">
+        <defs><clipPath id="under-m"><path d="M16.0,215 C36.0,215 44.0,215 56.0,214 C68.0,211 76.0,205 96.0,202 C120.0,200 136.0,200 152.0,197 C168.0,192 180.0,178 196.0,170 C208.0,166 218.0,167 224.0,166 C232.0,160 236.0,60 240.0,40 C244.0,60 248.0,160 256.0,166 C268.0,168 280.0,168 288.0,168 C304.0,172 316.0,204 332.0,207 C348.0,209 360.0,209 376.0,212 C384.0,214 388.0,215 392.0,215 L392.0,224 L16.0,224 Z"/></clipPath></defs>
+        <line x1="12" y1="34" x2="12" y2="224" stroke="#C7D2DB" stroke-width="1"/>
+        <line x1="12" y1="224" x2="394" y2="224" stroke="#C7D2DB" stroke-width="1"/>
+        <text class="axis" x="6" y="130" transform="rotate(-90 6 130)" text-anchor="middle">elevation</text>
+        <text class="tick" x="16" y="46">11,500 ft</text>
+        <g clip-path="url(#under-m)">
+          <rect x="60" y="34" width="112" height="190" fill="#2457A6" opacity=".16"/>
+          <rect x="172" y="34" width="138" height="190" fill="#2E7D6B" opacity=".18"/>
+          <rect x="310" y="34" width="70" height="190" fill="#C08A14" opacity=".2"/>
+        </g>
+        <path d="M16.0,215 C36.0,215 44.0,215 56.0,214 C68.0,211 76.0,205 96.0,202 C120.0,200 136.0,200 152.0,197 C168.0,192 180.0,178 196.0,170 C208.0,166 218.0,167 224.0,166" fill="none" stroke="#17252F" stroke-width="2" stroke-linecap="round"/>
+        <path d="M224.0,166 C232.0,160 236.0,60 240.0,40 C244.0,60 248.0,160 256.0,166" fill="none" stroke="#C08A14" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
+        <path d="M256.0,166 C268.0,168 280.0,168 288.0,168 C304.0,172 316.0,204 332.0,207 C348.0,209 360.0,209 376.0,212 C384.0,214 388.0,215 392.0,215" fill="none" stroke="#17252F" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="28" cy="215" r="3.5" fill="#17252F"/><circle cx="104" cy="201" r="3.5" fill="#2457A6"/><circle cx="208" cy="167" r="3.5" fill="#2E7D6B"/><circle cx="240" cy="40" r="3.5" fill="#C08A14"/><circle cx="344" cy="208" r="3.5" fill="#C08A14"/><circle cx="384" cy="214" r="3.5" fill="#17252F"/>
+        <text class="lbl" x="250" y="40" fill="#C08A14">Jungfraujoch</text>
+        <text class="sub" x="250" y="54">11,330 ft · optional</text>
+        <text class="band" x="16" y="242">Tampa</text>
+        <text class="sub" x="16" y="256">sea level</text>
+        <text class="sub" x="16" y="270">Sat 19</text>
+        <text class="band" x="116" y="242" text-anchor="middle">Munich</text>
+        <text class="sub" x="116" y="256" text-anchor="middle">1,700 ft</text>
+        <text class="sub" x="116" y="270" text-anchor="middle">Sun 20 – Wed 23</text>
+        <text class="band" x="241" y="242" text-anchor="middle">Grindelwald</text>
+        <text class="sub" x="241" y="256" text-anchor="middle">3,400 ft</text>
+        <text class="sub" x="241" y="270" text-anchor="middle">Wed 23 – Sun 27</text>
+        <text class="band" x="340" y="242" text-anchor="middle">Zürich</text>
+        <text class="sub" x="340" y="256" text-anchor="middle">1,340 ft</text>
+        <text class="sub" x="340" y="270" text-anchor="middle">27 – 29</text>
+        <text class="band" x="396" y="242" text-anchor="end">home</text>
       </svg>
     </div></div>
   </div>
@@ -315,24 +350,25 @@
 
     <div class="loc">
       <h3>Grindelwald — Wed 23 to Sun 27</h3>
-      <div class="locsub">Arrival evening plus three full days. Late September: lifts open, fewer crowds, snow possible above 2,500 m. Whichever day has the best forecast should get the big-mountain outing.</div>
+      <div class="locsub">Arrival evening plus three full days. Late September: lifts open, fewer crowds, snow possible above 8,000 ft. Whichever day has the best forecast should get the big-mountain outing.</div>
       <div class="ideas">
         <div class="sub">Hikes &amp; summits</div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-20" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-20">Bachalpsee <span class="tag list">on our list</span></label><div class="d">Alpine lake 50 min on foot from the First top station, flat the whole way. Mirrors the Schreckhorn on a still morning. The start of both hikes below.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bachalpsee" target="_blank" rel="noopener">map</a> · <a href="https://swissfamilyfun.com/jungfrau-travel-pass/" target="_blank" rel="noopener">lift prices</a></div></div><div class="meta"><b>$90</b><span class="when">early, before clouds</span> · First lift · easy</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-111" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-111">Bachalpsee → Waldspitz → Bort <span class="tag list">on our list</span></label><div class="d">The list note says "here to Waldspitz hike." Mostly downhill 3–4 h from the lake, alpine hut partway, ends at the Bort gondola station.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Waldspitz+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$0 extra</b><span class="when">morning start</span> · moderate</div></div>
-        <div class="idea"><div class="ibox"><input type="checkbox" id="i-22" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-22">Faulhorn summit from Bachalpsee <span class="tag sug">suggested</span></label><div class="d">The harder version: +600 m to 2,681 m, 1.5 h up, 360° of the Oberland. Instead of Waldspitz if the group wants a summit.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Faulhorn" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Faulhorn" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$0 extra</b><span class="when">morning start</span> · hard</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-22" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-22">Faulhorn summit from Bachalpsee <span class="tag sug">suggested</span></label><div class="d">The harder version: +2,000 ft to 8,800 ft, 1.5 h up, 360° of the Oberland. Instead of Waldspitz if the group wants a summit.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Faulhorn" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Faulhorn" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$0 extra</b><span class="when">morning start</span> · hard</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-23" class="proxy" data-opt="o-mann" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-23">Männlichen → Kleine Scheidegg → Eiger Trail <span class="tag sug">suggested</span></label><div class="d">Gondola up, 90-min Panorama Trail with the Eiger north face in view, then 2.5 h down the Eiger Trail to Alpiglen. The hikers' alternative to Jungfraujoch at a third of the cost.</div><div class="lk"><a href="https://www.maennlichen.ch/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=M%C3%A4nnlichen" target="_blank" rel="noopener">map</a> · <a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">prices</a></div></div><div class="meta"><b>$75</b><span class="when">morning start</span> · full day · moderate</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-lob" class="extra" data-bucket="do" data-cost="35" data-name="Lobhornhütte hike (bus + Sulwald cable car)" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-lob">Lobhornhütte SAC <span class="tag list">on our list</span></label><div class="d">Alpine Club hut at 6,400 ft above the Lauterbrunnen valley, away from the crowds. Bus from Lauterbrunnen to Isenfluh, 10-min cable car to Sulwald, then a well-marked 1.5 h climb (2 km, 1,500 ft up) to the hut and the Sulsseewli lake — with the Eiger, Mönch and Jungfrau across the valley the whole way. Recommended to the group as a hut you hike to from Lauterbrunnen where the warden cooks for you — order when you arrive; Käseschnitte and cake on the terrace, cash only. Back the same way in about 2 h 15 walking, or continue to Grütschalp for a 4–4.5 h point-to-point. Overnight is possible: 24 beds allocated by the hut team, hut sleeping bag required, lights out at 10 pm.</div><div class="lk"><a href="https://www.lauterbrunnen.swiss" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Lobhornh%C3%BCtte+SAC" target="_blank" rel="noopener">map</a> · <a href="https://www.alltrails.com/trail/switzerland/bern/lobhornhutte-sulsseewli-via-sulwald" target="_blank" rel="noopener">trail</a></div></div><div class="meta"><b>$35</b><span class="when">morning start</span> · half day · moderate</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-24" class="proxy" data-opt="o-oesch" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-24">Oeschinen Lake &amp; the Heuberg loop <span class="tag list">on our list</span></label><div class="d">Train to Kandersteg (~1 h 45), gondola, 20-min walk to the lake. The ledge loop above it (2–3 h) is the best view in the Oberland. Rowboats, mountain coaster.</div><div class="lk"><a href="https://www.oeschinensee.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Oeschinensee" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$100</b><span class="when">morning start</span> · full day · moderate</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-25" class="proxy" data-opt="o-augst" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-25">Hardergrat <span class="tag list">on our list</span> <span class="tag warn">read this</span></label><div class="d">The full ridge is ~24 km, 10–12+ hours, knife-edge, no water, no bail-outs; people die on it most years. Not for this trip. The sane version — Lombachalp → Augstmatthorn and back, 4–5 h — gets the same ridge views.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Augstmatthorn" target="_blank" rel="noopener">map (Augstmatthorn)</a> · <a href="https://www.google.com/maps/search/?api=1&query=Hardergrat" target="_blank" rel="noopener">map (full ridge)</a></div></div><div class="meta"><b>$20</b><span class="when">morning start</span> · bus · hard</div></div>
         <div class="sub">Lifts &amp; big-ticket views</div>
-        <div class="idea"><div class="ibox"><input type="checkbox" id="i-26" class="proxy" data-opt="o-jj" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-26">Jungfraujoch, "Top of Europe" <span class="tag sug">suggested</span></label><div class="d">Eiger Express gondola, then cog train through the mountain to 3,454 m. Ice palace, glacier, snow. Expensive and touristy; unforgettable if clear, a waste in cloud. CHF 10 seat reservation is mandatory.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Jungfraujoch" target="_blank" rel="noopener">map</a> · <a href="https://www.myswissalps.com/activity/jungfraujoch/" target="_blank" rel="noopener">prices by pass</a></div></div><div class="meta"><b>$240</b><span class="when">early, before clouds</span> · 5–6 h · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-26" class="proxy" data-opt="o-jj" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-26">Jungfraujoch, "Top of Europe" <span class="tag sug">suggested</span></label><div class="d">Eiger Express gondola, then cog train through the mountain to 11,330 ft. Ice palace, glacier, snow. Expensive and touristy; unforgettable if clear, a waste in cloud. CHF 10 seat reservation is mandatory.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Jungfraujoch" target="_blank" rel="noopener">map</a> · <a href="https://www.myswissalps.com/activity/jungfraujoch/" target="_blank" rel="noopener">prices by pass</a></div></div><div class="meta"><b>$240</b><span class="when">early, before clouds</span> · 5–6 h · easy</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-27" class="proxy" data-opt="o-first" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-27">First gondola &amp; Cliff Walk <span class="tag sug">suggested</span></label><div class="d">Up from the village in 25 min. The Cliff Walk is free at the top. This is the lift for Bachalpsee, Waldspitz, Faulhorn, and the ziplines. CHF 76 full fare, half with Half Fare Card or BO Pass.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Firstbahn+Grindelwald" target="_blank" rel="noopener">map</a> · <a href="https://swissfamilyfun.com/jungfrau-travel-pass/" target="_blank" rel="noopener">prices</a></div></div><div class="meta"><b>$90</b><span class="when">early, before clouds</span> · half day · easy</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-28" class="proxy" data-opt="o-pfing" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-28">Luftseilbahn Grindelwald Pfingstegg <span class="tag list">on our list</span></label><div class="d">Small cable car right in the village to a terrace above the glacier gorge. Toboggan run and the Fly Line tree-top zip at the top.</div><div class="lk"><a href="https://www.pfingstegg.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Luftseilbahn+Grindelwald+Pfingstegg" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$55</b><span class="when">afternoon</span> · half day · easy</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-29" class="proxy" data-opt="o-beatus" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-29">Harder Kulm at sunset <span class="tag sug">suggested</span></label><div class="d">Funicular from Interlaken to a terrace over both lakes and the Eiger–Mönch–Jungfrau line.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/harder-kulm/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Harder+Kulm" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$48</b><span class="when">sunset</span> · 2 h · easy</div></div>
         <div class="sub">Adrenaline</div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-30" class="proxy" data-opt="o-sky" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-30">Skydiving over the Alps <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">Airplane jump from Interlaken, half a day, weather-dependent. Book early.</div><div class="lk"><a href="https://www.getyourguide.com/grindelwald-l1613/sky-diving-tc87/" target="_blank" rel="noopener">prices &amp; booking</a> · <a href="https://www.google.com/maps/search/?api=1&query=Interlaken" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$540</b><span class="when">morning</span> · half day</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-31" class="proxy" data-opt="o-para" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-31">Tandem paragliding <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">Launch from First, land in the village. 12–20 min in the air, ~1.5 h all in. Pilots fly smooth or acrobatic on request. Book a week out for six.</div><div class="lk"><a href="https://www.paragliding-interlaken.ch" target="_blank" rel="noopener">info</a> · <a href="https://www.getyourguide.com/interlaken-l793/paragliding-tc90/" target="_blank" rel="noopener">prices &amp; booking</a></div></div><div class="meta"><b>$230</b><span class="when">morning or afternoon</span> · +$45 photos</div></div>
-        <div class="idea"><div class="ibox"><input type="checkbox" id="i-32" class="proxy" data-opt="o-swing" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-32">Canyon swing <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">A 90 m drop into the Gletscherschlucht, in the village. 2–3 h including the walk in.</div><div class="lk"><a href="https://www.outdoor.ch/en/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Gletscherschlucht+Grindelwald" target="_blank" rel="noopener">map</a> · <a href="https://www.getyourguide.com/grindelwald-l1613/sky-diving-tc87/" target="_blank" rel="noopener">prices &amp; booking</a></div></div><div class="meta"><b>$180</b><span class="when">afternoon</span> · 2–3 h</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-32" class="proxy" data-opt="o-swing" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-32">Canyon swing <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">A 300 ft drop into the Gletscherschlucht, in the village. 2–3 h including the walk in.</div><div class="lk"><a href="https://www.outdoor.ch/en/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Gletscherschlucht+Grindelwald" target="_blank" rel="noopener">map</a> · <a href="https://www.getyourguide.com/grindelwald-l1613/sky-diving-tc87/" target="_blank" rel="noopener">prices &amp; booking</a></div></div><div class="meta"><b>$180</b><span class="when">afternoon</span> · 2–3 h</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-33" class="proxy" data-opt="o-cart" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-33">Mountain carts / trottibikes <span class="tag sug">suggested</span></label><div class="d">Freewheel from Bort back into Grindelwald on a cart or oversized scooter. Helmets included.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bort+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$25</b><span class="when">on the way down</span> · 45 min</div></div>
         <div class="idea"><div class="ibox"><input type="checkbox" id="i-34" class="proxy" data-opt="o-zip" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-34">First Flyer &amp; First Glider <span class="tag sug">suggested</span></label><div class="d">Two ziplines from the First top station, ~CHF 31 each. Short, fast, fun once.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=First+Flyer+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$75</b><span class="when">anytime up top</span> · 30 min</div></div>
         <div class="sub">Easy days &amp; leisure</div>
@@ -434,7 +470,7 @@
       <table class="mini">
         <tr><th></th><th>Catch it at</th><th>Runs</th><th>To Zürich HB</th><th>To airport</th></tr>
         <tr><td>S-Bahn</td><td>Opfikon station, short walk</td><td>every 15 min</td><td>11 min</td><td>5 min</td></tr>
-        <tr><td>Tram 10</td><td>Glattpark stop, 300 m</td><td>every 7–15 min</td><td>25 min</td><td>9 min</td></tr>
+        <tr><td>Tram 10</td><td>Glattpark stop, 1,000 ft</td><td>every 7–15 min</td><td>25 min</td><td>9 min</td></tr>
       </table>
       Both run about 5:30 am–12:30 am. No late-night service on Sunday or Monday nights — after 12:30 am it's a CHF 40–50 taxi.
     </div>
@@ -579,18 +615,18 @@
       <div class="day-body">
         <div class="plan"><h4>Two versions — can be a split decision</h4>
           <ul class="tl">
-            <li class="flex"><time>A</time><p><b>Jungfraujoch.</b> Eiger Express from Grindelwald Terminal to Eigergletscher (15 min), cog train to 3,454 m. Ice Palace, Sphinx terrace. Seat reservation (CHF 10) is mandatory. 5–6 h.</p></li>
+            <li class="flex"><time>A</time><p><b>Jungfraujoch.</b> Eiger Express from Grindelwald Terminal to Eigergletscher (15 min), cog train to 11,330 ft. Ice Palace, Sphinx terrace. Seat reservation (CHF 10) is mandatory. 5–6 h.</p></li>
             <li class="flex"><time>B</time><p><b>Männlichen → Kleine Scheidegg → Eiger Trail.</b> Gondola up, Panorama Trail (90 min, easy), Eiger Trail down to Alpiglen (2.5 h, steep), train home. A third of the cost.</p></li>
             <li class="flex"><time>either</time><p>Morning start. Both groups can meet at Kleine Scheidegg for lunch — the Jungfraujoch train passes through it.</p></li>
             <li class="flex"><time>late pm</time><p><b>Canyon swing</b> at the Gletscherschlucht for whoever wants it. 2–3 h.</p></li>
           </ul>
           <div class="heads-up"><b>Weather rule:</b> whichever of Thu/Fri/Sat has the best forecast gets this day. <a href="https://www.meteoswiss.admin.ch" target="_blank" rel="noopener">MeteoSwiss</a> the night before; jungfrau.ch webcams the morning of.</div>
-          <div class="swap"><b>Swap:</b> Lauterbrunnen / Trümmelbach / Mürren is the lazy version of this day — same valley, no summit, half the walking.</div>
+          <div class="swap"><b>Swap:</b> Lauterbrunnen / Trümmelbach / Mürren is the lazy version of this day — same valley, no summit, half the walking. The Lobhornhütte hike (Ideas page) is the quiet middle option: same valley, a real climb, the same three peaks in view, and a hut terrace for lunch.</div>
         </div>
         <div class="opts"><h4>Tick to add to your estimate</h4>
           <div class="opt" data-group="eiger"><input type="checkbox" id="o-jj" data-bucket="do" data-cost="240" data-name="Jungfraujoch (full fare + seat fee)"><label for="o-jj"><span class="t">A: Jungfraujoch <span class="tag pick">pick one</span></span><div class="d">~CHF 200 full fare from Grindelwald + CHF 10 seat · ~$145 with Half Fare · ~$185 with BO Pass.</div></label><div class="price">$240<small>full fare</small></div></div>
           <div class="opt" data-group="eiger"><input type="checkbox" id="o-mann" data-bucket="do" data-cost="75" data-name="Männlichen + Kleine Scheidegg + Eiger Trail"><label for="o-mann"><span class="t">B: Männlichen / Eiger Trail <span class="tag pick">pick one</span></span><div class="d">Gondola up + train back from Alpiglen. Half with Half Fare.</div></label><div class="price">$75<small>est.</small></div></div>
-          <div class="opt" data-group="eiger"><input type="checkbox" id="o-laut" data-bucket="do" data-cost="50" data-name="Lauterbrunnen / Trümmelbach / Mürren"><label for="o-laut"><span class="t">C: Lauterbrunnen valley <span class="tag pick">pick one</span></span><div class="d">Trains + Trümmelbach entry.</div></label><div class="price">$50<small>est.</small></div></div>
+          <div class="opt" data-group="eiger"><input type="checkbox" id="o-laut" data-bucket="do" data-cost="50" data-name="Lauterbrunnen / Trümmelbach / Mürren"><label for="o-laut"><span class="t">C: Lauterbrunnen valley <span class="tag pick">pick one</span></span><div class="d">Trains + Trümmelbach entry. Or swap in the Lobhornhütte hike, ~$35 for bus + cable car.</div></label><div class="price">$50<small>est.</small></div></div>
           <div class="opt"><input type="checkbox" id="o-swing" data-bucket="do" data-cost="180" data-name="Canyon swing"><label for="o-swing"><span class="t">Canyon swing <span class="tag go">adrenaline</span></span><div class="d">Grindelwald glacier gorge.</div></label><div class="price">$180<small>est.</small></div></div>
           <div class="opt"><input type="checkbox" id="o-ks" data-bucket="food" data-cost="35" data-name="Kleine Scheidegg lunch"><label for="o-ks"><span class="t">Lunch at Kleine Scheidegg</span><div class="d">Mountain-station prices; bring Coop snacks to offset.</div></label><div class="price">$35<small>est.</small></div></div>
         </div>
@@ -697,10 +733,10 @@
           <tr><td>WunderLocke, 3 nights</td><td class="n">$2,200</td><td class="n">$366.67</td></tr>
           <tr><td>Grindelwald house, 4 nights</td><td class="n">$2,567</td><td class="n">$427.83</td></tr>
           <tr><td id="g-kameha-label">Zürich hotel — 3 rooms × 2 nights</td><td class="n" id="g-kameha">$1,224</td><td class="n" id="g-kameha-each">$204</td></tr>
-          <tr class="total"><td>Booked so far</td><td class="n" id="g-total">$13,191</td><td class="n" id="g-each">$2,198.50</td></tr>
+          <tr class="total"><td>Booked so far, each</td><td class="n"></td><td class="n" id="g-each">$2,198.50</td></tr>
         </table>
         <p class="fine">Zürich hotel uses the room count chosen in "Your estimate" (3 or 4 — still being decided). "Each" is an even six-way split; the actual room split is TBD.</p>
-        <p class="fine">Not in the group number yet: Munich→Zürich train (~$60 each, everyone) and whichever Swiss pass option each person picks (~$200–400). With those, expect roughly <b>$14,700–16,400 for the group</b> before food, beer, and excursions.</p>
+        <p class="fine">Still to add per person: the Munich→Zürich train (~$60) and whichever Swiss pass option you pick (~$200–400). Both show in "Your estimate."</p>
       </div>
       <div class="card">
         <h3>Your estimate</h3>
@@ -800,7 +836,7 @@
 <section class="block" id="packing">
   <div class="wrap">
     <h2>What to pack</h2>
-    <p class="intro">Three climates in ten days. Grindelwald village: 5–15 °C, near freezing up high. Munich and Zürich: 8–19 °C. Expect one rainy day. Boxes are a personal checklist and don't save.</p>
+    <p class="intro">Three climates in ten days. Grindelwald village: 40–60 °F, near freezing up high. Munich and Zürich: 45–65 °F. Expect one rainy day. Boxes are a personal checklist and don't save.</p>
     <div class="packgrid">
     <div class="pack">
       <h3>Documents &amp; money</h3>
@@ -822,7 +858,7 @@
         <li><label><input type="checkbox"> <span><span class="pn">Hiking pants or leggings</span></span></label></li>
         <li><label><input type="checkbox"> <span><span class="pn">Jeans or trousers</span><small>For city days.</small></span></label></li>
         <li><label><input type="checkbox"> <span><span class="pn">One nice outfit</span><small>Zürich dinners, the hotel.</small></span></label></li>
-        <li><label><input type="checkbox"> <span><span class="pn">Hat &amp; light gloves</span><small>Jungfraujoch and Faulhorn are cold in sun.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Hat &amp; light gloves</span><small>Jungfraujoch and Faulhorn are cold even in sun.</small></span></label></li>
         <li><label><input type="checkbox"> <span><span class="pn">Sunglasses &amp; sunscreen</span><small>Stronger sun at altitude.</small></span></label></li>
         <li><label><input type="checkbox"> <span><span class="pn">Swimsuit</span><small>Zürich lake or Thermalbad.</small></span></label></li>
         <li><label><input type="checkbox"> <span><span class="pn">Wool hiking socks</span></span></label></li>
@@ -993,12 +1029,11 @@
     const foodUsed = Math.max(base, sums.food);
     const total = sums.travel + sums.do + foodUsed;
     kamehaPrice.textContent = fmt(share);
-    const nRooms = share === 272 ? 4 : 3, gK = nRooms * 408, gT = 7200 + 2200 + 2567 + gK;
+    const nRooms = share === 272 ? 4 : 3, gK = nRooms * 408;
     document.getElementById('g-kameha-label').textContent = 'Zürich hotel — ' + nRooms + ' rooms × 2 nights';
     document.getElementById('g-kameha').textContent = fmt(gK);
     document.getElementById('g-kameha-each').textContent = fmt(share);
-    document.getElementById('g-total').textContent = fmt(gT);
-    document.getElementById('g-each').textContent = '$' + (gT / 6).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('g-each').textContent = '$' + ((7200 + 2200 + 2567 + gK) / 6).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
     totalEl.firstChild.textContent = fmt(total);
     sub.textContent = fmt(sums.travel) + ' travel + ' + fmt(sums.do) + ' doing + ' + fmt(foodUsed) + ' eating';
     document.getElementById('sub-travel').textContent = fmt(sums.travel);
