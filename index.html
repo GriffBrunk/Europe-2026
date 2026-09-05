@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Munich · Grindelwald · Zürich — Sept 19–29, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --snow:#EEF3F7; --paper:#FFFFFF; --ink:#17252F; --slate:#5B6C78; --line:#D5DEE5;
+    --blue:#2457A6; --blue-soft:#E3ECF8; --amber:#C08A14; --amber-soft:#FBF1D9; --green:#2E7D6B; --green-soft:#E1F0EB;
+    --red:#B2452F; --red-soft:#F8E6E1;
+    --serif:"Fraunces",Georgia,serif; --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --max:1040px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--snow);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+  a{color:var(--blue);text-decoration-thickness:1px;text-underline-offset:2px}
+  a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.1;margin:0}
+  p{margin:0 0 .75rem}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+  /* hero */
+  .hero{padding:44px 0 0}
+  .hero h1{font-size:clamp(34px,6vw,60px);letter-spacing:-.01em;max-width:18ch}
+  .hero .lede{font-size:18px;color:var(--slate);max-width:62ch;margin:14px 0 8px}
+  .route{margin:22px 0 0}
+  .route .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .route svg{width:100%;height:auto;display:block}
+  .route .lbl{font:600 13px var(--sans);fill:var(--ink)}
+  .route .sub{font:400 12px var(--sans);fill:var(--slate)}
+  .route .band{font:600 11px var(--sans);fill:var(--slate)}
+  .route .tick{font:400 11px var(--sans);fill:#8A9AA6}
+  .route .axis{font:400 11px var(--sans);fill:#8A9AA6;letter-spacing:.03em}
+
+  /* tabs */
+  .tabs{position:sticky;top:0;z-index:20;background:rgba(238,243,247,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+  .tabs .wrap{display:flex;gap:0;align-items:stretch;overflow-x:auto;scrollbar-width:none}
+  .tabs .wrap::-webkit-scrollbar{display:none}
+  .tabs button{white-space:nowrap;flex:0 0 auto}
+  .tabs button{font:600 15px var(--sans);background:none;border:0;border-bottom:3px solid transparent;padding:14px 18px 11px;color:var(--slate);cursor:pointer;border-radius:0}
+  .tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--blue)}
+  .tabs .num{font-family:var(--serif);font-size:13px;margin-right:6px;color:var(--blue)}
+  .panel{display:none}
+  .panel.on{display:block}
+
+  /* date strip (plan tab only) */
+  .strip{background:var(--paper);border-bottom:1px solid var(--line)}
+  .strip .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 20px;scrollbar-width:none}
+  .strip .wrap::-webkit-scrollbar{display:none}
+  .strip a{flex:0 0 auto;text-decoration:none;color:var(--ink);background:var(--snow);border:1px solid var(--line);border-radius:6px;padding:6px 10px;line-height:1.1;text-align:center;min-width:58px}
+  .strip a b{display:block;font-family:var(--serif);font-size:18px;font-weight:600}
+  .strip a span{font-size:11px;color:var(--slate)}
+  .strip a.m{border-color:#9DB5DD}
+  .strip a.g{border-color:#8DC1B4}
+  .strip a.z{border-color:#E3C87A}
+
+  /* sections */
+  section.block{padding:34px 0 8px}
+  .block > .wrap > h2{font-size:26px;margin-bottom:8px}
+  .intro{color:var(--slate);max-width:66ch;margin-bottom:14px}
+  .intro b{color:var(--ink);font-weight:600}
+
+  /* ideas */
+  .loc{margin:0 0 26px}
+  .loc h3{font-size:22px;margin-bottom:4px}
+  .loc .locsub{color:var(--slate);font-size:14px;margin-bottom:10px}
+  .ideas{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .sub{font:600 13px var(--sans);color:var(--blue);background:var(--blue-soft);padding:6px 18px;border-top:1px solid var(--line)}
+  .sub:first-child{border-top:0}
+  .idea{display:grid;grid-template-columns:30px 1fr auto;gap:8px 16px;padding:12px 18px;border-top:1px solid var(--line);align-items:start}
+  .idea .t{font-weight:600;display:block;cursor:pointer}
+  .idea .t .tag{margin-left:6px}
+  .idea .d{font-size:14px;color:var(--slate);margin-top:2px;max-width:70ch}
+  .idea .d a{white-space:nowrap}
+  .idea .meta{text-align:right;font-size:12px;color:var(--slate);white-space:nowrap;padding-top:3px}
+  .idea .meta .when{color:var(--blue);font-weight:600}
+  .idea .meta b{display:block;font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink)}
+  .tag{display:inline-block;font-size:11px;font-weight:600;padding:1px 6px;border-radius:4px;vertical-align:1px}
+  .tag.go{background:var(--amber-soft);color:#7A5607}
+  .tag.pick{background:var(--blue-soft);color:var(--blue)}
+  .tag.all{background:var(--green-soft);color:var(--green)}
+  .tag.warn{background:var(--red-soft);color:var(--red)}
+  .tag.list{background:#EEF1F4;color:var(--slate)}
+  .tag.sug{background:transparent;color:var(--amber);border:1px solid var(--amber)}
+  .idea .lk{font-size:13px;margin-top:4px}
+  .ibox{padding-top:3px}
+  .ibox input{width:18px;height:18px;margin:0;accent-color:var(--blue)}
+  .nobox{display:block;font-size:10px;line-height:1.15;color:#8A9AA6;width:44px;margin:4px 0 0 -9px;text-align:center}
+  .tally{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:30;background:var(--green);color:#fff;border:0;border-radius:999px;padding:10px 16px;font:600 14px var(--sans);box-shadow:0 6px 20px rgba(23,37,47,.18);cursor:pointer;display:none;align-items:center;gap:8px}
+  .tally b{font-family:var(--serif);font-size:18px;font-weight:700}
+  .tally.show{display:flex}
+  .idea .lk a{white-space:nowrap}
+
+  /* day */
+  .day{background:var(--paper);border:1px solid var(--line);border-radius:10px;margin:0 0 18px;overflow:hidden}
+  .day-head{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:18px 20px 12px;border-bottom:1px solid var(--line);align-items:start}
+  .day-head .num{font-family:var(--serif);font-size:44px;font-weight:700;line-height:.9}
+  .day-head .num small{display:block;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--slate);margin-top:6px;letter-spacing:.02em}
+  .day-head h3{font-size:22px;margin-bottom:4px}
+  .day-head .where{color:var(--slate);font-size:14px}
+  .day-head .where b{color:var(--ink);font-weight:600}
+  .day-body{display:grid;grid-template-columns:1.2fr 1fr}
+  .plan{padding:16px 20px 14px;border-right:1px solid var(--line)}
+  .opts{padding:16px 20px 14px;background:#FAFCFD}
+  .plan h4,.opts h4{font:600 13px var(--sans);color:var(--slate);margin:0 0 10px}
+  .tl{list-style:none;margin:0;padding:0}
+  .tl li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:6px 0;border-top:1px dashed var(--line)}
+  .tl li:first-child{border-top:0}
+  .tl time{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--blue);padding-top:1px}
+  .tl li.flex time{color:var(--slate);font-family:var(--sans);font-weight:500;font-size:13px}
+  .tl p{margin:0}
+  .tl .note{font-size:14px;color:var(--slate);margin-top:2px}
+  .swap{font-size:14px;color:var(--slate);border-top:1px solid var(--line);margin-top:10px;padding-top:8px}
+  .swap b{color:var(--ink);font-weight:600}
+
+  /* option rows */
+  .opt{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:start;padding:9px 0;border-top:1px solid var(--line)}
+  .opt:first-of-type{border-top:0}
+  .opt input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--blue)}
+  .opt label{cursor:pointer}
+  .opt .t{font-weight:600}
+  .opt .d{font-size:14px;color:var(--slate);margin-top:1px}
+  .opt .d a{white-space:nowrap}
+  .opt .price{font-family:var(--serif);font-weight:600;font-size:17px;text-align:right;white-space:nowrap}
+  .opt .price small{display:block;font:500 11px var(--sans);color:var(--slate)}
+  .opt.fixed input{accent-color:var(--green)}
+  .opt .tag{margin-left:5px}
+  .heads-up{background:var(--amber-soft);border-left:3px solid var(--amber);padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0 0;font-size:14px}
+  .heads-up.red{background:var(--red-soft);border-color:var(--red)}
+  .heads-up.blue{background:var(--blue-soft);border-color:var(--blue)}
+  .heads-up b{font-weight:600}
+  .mini{margin:8px 0;font-size:13px;width:auto;min-width:60%}
+  .mini th{font-size:12px;padding:3px 14px 3px 0;border-bottom:1px solid #E3D3A6}
+  .mini td{padding:4px 14px 4px 0;border-bottom:1px solid #EFE5C8;white-space:nowrap}
+  .mini tr:last-child td{border-bottom:0}
+  .mini td:first-child{font-weight:600}
+
+  /* stays */
+  .stays{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 14px}
+  .stay{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .stay h3{font-size:20px;margin-bottom:2px}
+  .stay .dates{color:var(--blue);font-weight:600;font-size:14px;margin-bottom:8px}
+  .stay dl{margin:0;font-size:14px}
+  .stay dt{color:var(--slate);float:left;clear:left;width:84px}
+  .stay dd{margin:0 0 4px 84px}
+
+  /* cost */
+  .costgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .card h3{font-size:20px;margin-bottom:10px}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  th{text-align:left;font-weight:600;color:var(--slate);font-size:13px;padding:6px 0;border-bottom:1px solid var(--line)}
+  td{padding:7px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td.n,th.n{text-align:right;font-family:var(--serif);font-weight:600;white-space:nowrap}
+  tr.total td{border-bottom:0;border-top:2px solid var(--ink);font-weight:600}
+  tr.total td.n{font-size:18px}
+  .who{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+  .who select{font:inherit;padding:7px 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink)}
+  .big{font-family:var(--serif);font-size:44px;font-weight:700;line-height:1;color:var(--green)}
+  .big small{font:500 13px var(--sans);color:var(--slate);display:block;margin-top:6px}
+  .picked{list-style:none;margin:10px 0 0;padding:0;font-size:14px}
+  .picked li{display:flex;justify-content:space-between;gap:12px;padding:4px 0;border-top:1px dashed var(--line)}
+  .picked li span:last-child{font-family:var(--serif);font-weight:600}
+  .empty{color:var(--slate);font-size:14px;margin-top:8px}
+  .fine{font-size:13px;color:var(--slate);margin-top:10px}
+  .bucket{border-top:1px solid var(--line);padding:10px 0 6px;margin-top:8px}
+  .bh{display:flex;justify-content:space-between;align-items:baseline;font-weight:600}
+  .bh b{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--green)}
+  .food-base{margin:6px 0 4px}
+  .food-base select{font-size:16px;padding:6px 8px}
+  .btnrow{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  button.b{font:600 14px var(--sans);padding:8px 12px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+  button.b.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+  .qs{list-style:none;margin:0;padding:0}
+  .qs li{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin-bottom:8px}
+  .qs li b{font-weight:600}
+  .links{columns:2;column-gap:28px;font-size:15px;margin:0;padding-left:18px}
+  .links li{break-inside:avoid;margin-bottom:5px}
+  .packgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .pack{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .pack h3{font-size:19px;margin-bottom:8px}
+  .pl{list-style:none;margin:0;padding:0}
+  .pl li{border-top:1px dashed var(--line);padding:5px 0;font-size:15px}
+  .pl li:first-child{border-top:0}
+  .pl label{display:grid;grid-template-columns:22px 1fr;gap:8px;cursor:pointer;align-items:start}
+  .pl input{width:17px;height:17px;margin:3px 0 0;accent-color:var(--green)}
+  .pl .pn{font-weight:500}
+  .pl small{display:block;font-size:12.5px;color:#8A9AA6;line-height:1.35;margin-top:1px}
+  .pl input:checked + span .pn{color:var(--slate);text-decoration:line-through}
+  footer{padding:30px 0 50px;color:var(--slate);font-size:13px}
+
+  @media (max-width:760px){
+    .day-body{grid-template-columns:1fr}
+    .plan{border-right:0;border-bottom:1px solid var(--line)}
+    .day-head{grid-template-columns:70px 1fr;padding:14px 16px 10px}
+    .day-head .num{font-size:34px}
+    .plan,.opts{padding:14px 16px}
+    .stays,.costgrid,.packgrid{grid-template-columns:1fr}
+    .links{columns:1}
+    .mini{display:block;overflow-x:auto;min-width:0}
+    .tl li{grid-template-columns:54px 1fr}
+    .route .scroll svg{min-width:760px}
+    .ibox input{width:22px;height:22px}
+    .idea .t.tap{cursor:pointer}
+    .idea{grid-template-columns:30px 1fr;gap:4px 10px}
+    .idea .meta{grid-column:2;text-align:left;white-space:normal}
+    .idea .meta .when{color:var(--blue);font-weight:600}
+  .idea .meta b{display:inline;margin-right:8px}
+    .tabs button{padding:12px 10px 9px;font-size:14px}
+    .tabs .num{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Oktoberfest, the Eiger, and a lake day in Zürich</h1>
+    <p class="lede">Six of us, September 19–29, 2026. Four pages: a <b>list of ideas</b> for each stop, <b>one possible way</b> to arrange them, <b>what it all costs</b>, and <b>what to pack</b>. The stays and flights are booked; almost everything else is a proposal.</p>
+    <div class="route"><div class="scroll" aria-label="Elevation over the days of the trip: Tampa at sea level Sept 19, Munich 520 meters Sept 20–23, Grindelwald 1,034 meters Sept 23–27 with an optional Jungfraujoch visit at 3,454 meters, Zürich 408 meters Sept 27–29, home Sept 29">
+      <svg viewBox="0 0 1000 268" role="img">
+        <defs><clipPath id="under"><path d="M40,215 C90,215 110,215 140,214 C170,211 190,205 240,202 C300,200 340,200 380,197 C420,192 450,178 490,170 C520,166 545,167 560,166 C580,160 590,60 600,40 C610,60 620,160 640,166 C670,168 700,168 720,168 C760,172 790,204 830,207 C870,209 900,209 940,212 C960,214 970,215 980,215 L980,224 L40,224 Z"/></clipPath></defs>
+        <!-- subtle axes -->
+        <line x1="34" y1="34" x2="34" y2="224" stroke="#C7D2DB" stroke-width="1"/>
+        <line x1="34" y1="224" x2="980" y2="224" stroke="#C7D2DB" stroke-width="1"/>
+                <text class="axis" x="14" y="130" transform="rotate(-90 14 130)" text-anchor="middle">elevation</text>
+        <text class="tick" x="40" y="46">3,500 m</text>
+        <!-- shaded bands: where we sleep -->
+        <g clip-path="url(#under)">
+          <rect x="150" y="34" width="280" height="190" fill="#2457A6" opacity=".16"/>
+          <rect x="430" y="34" width="345" height="190" fill="#2E7D6B" opacity=".18"/>
+          <rect x="775" y="34" width="175" height="190" fill="#C08A14" opacity=".2"/>
+        </g>
+        <text class="band" x="290" y="242" text-anchor="middle">Munich · 3 nights</text>
+        <text class="band" x="602" y="242" text-anchor="middle">Grindelwald · 4 nights</text>
+        <text class="band" x="862" y="242" text-anchor="middle">Zürich · 2 nights</text>
+        <!-- flowing profile -->
+        <path d="M40,215 C90,215 110,215 140,214 C170,211 190,205 240,202 C300,200 340,200 380,197 C420,192 450,178 490,170 C520,166 545,167 560,166" fill="none" stroke="#17252F" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M560,166 C580,160 590,60 600,40 C610,60 620,160 640,166" fill="none" stroke="#C08A14" stroke-width="2.2" stroke-dasharray="5 4" stroke-linecap="round"/>
+        <path d="M640,166 C670,168 700,168 720,168 C760,172 790,204 830,207 C870,209 900,209 940,212 C960,214 970,215 980,215" fill="none" stroke="#17252F" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="70" cy="215" r="4" fill="#17252F"/><circle cx="260" cy="201" r="4" fill="#2457A6"/><circle cx="520" cy="167" r="4" fill="#2E7D6B"/><circle cx="600" cy="40" r="4" fill="#C08A14"/><circle cx="860" cy="208" r="4" fill="#C08A14"/><circle cx="960" cy="214" r="4" fill="#17252F"/>
+        <text class="lbl" x="50" y="200">Tampa · sea level</text>
+        
+        <text class="lbl" x="215" y="186">Munich · 520 m</text>
+        
+        <text class="lbl" x="440" y="151">Grindelwald · 1,034 m</text>
+        
+        <text class="lbl" x="612" y="38" fill="#C08A14">Jungfraujoch · 3,454 m</text>
+        <text class="sub" x="612" y="56">optional, if it's clear</text>
+        <text class="lbl" x="815" y="192">Zürich · 408 m</text>
+        
+        <text class="band" x="40" y="242">fly out</text>
+        <text class="sub" x="40" y="258">Sat 19</text>
+        <text class="sub" x="290" y="258" text-anchor="middle">Sun 20 – Wed 23</text>
+        <text class="sub" x="602" y="258" text-anchor="middle">Wed 23 – Sun 27</text>
+        <text class="sub" x="862" y="258" text-anchor="middle">Sun 27 – Tue 29</text>
+        <text class="band" x="980" y="242" text-anchor="end">home</text>
+        <text class="sub" x="980" y="258" text-anchor="end">Tue 29</text>
+      </svg>
+    </div></div>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Pages">
+  <div class="wrap">
+    <button role="tab" aria-selected="true" data-tab="ideas"><span class="num">1</span>Ideas by place</button>
+    <button role="tab" aria-selected="false" data-tab="plan"><span class="num">2</span>A possible plan</button>
+    <button role="tab" aria-selected="false" data-tab="costs"><span class="num">3</span>Costs</button>
+    <button role="tab" aria-selected="false" data-tab="pack"><span class="num">4</span>Packing</button>
+  </div>
+</nav>
+
+<!-- ============ PAGE 1: IDEAS ============ -->
+<div class="panel on" id="p-ideas">
+<section class="block">
+  <div class="wrap">
+    <h2>Things worth considering, by place</h2>
+    <p class="intro">Nothing here is decided. All 15 places from the group's Google Maps list are here, tagged <span class="tag list">on our list</span>; anything tagged <span class="tag sug">suggested</span> was added while building this page and hasn't been vetted by the group. Every item has a map or info link, and a prices/booking link where one exists. <b>Tick the box on anything you'd do</b> and it lands on your Costs page — the same tick as on the plan page, so nothing is counted twice. Free things and pay-as-you-go shopping can be ticked too; they show up on Costs as $0 or "varies" so the list of what people want is complete. Costs are per person, full fare, in US dollars.</p>
+
+    <div class="loc">
+      <h3>Munich — Sun 20 to Wed 23</h3>
+      <div class="locsub">Two and a half days. One is Oktoberfest. The question is how to spend the other one and a half.</div>
+      <div class="ideas">
+        <div class="sub">Oktoberfest</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-1" class="proxy" data-opt="o-wiesn" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-1">The full day in costume <span class="tag sug">suggested</span> <span class="tag go">why we're here</span></label><div class="d">Weekday tents open at 10. Monday walk-ins work if you're at the gates by 9:30. Attire is booked for Monday at Bavarian Outfitters, Lindwurmstr. 108 — five minutes from the Wiesn.</div><div class="lk"><a href="https://www.oktoberfest.de/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Theresienwiese+M%C3%BCnchen" target="_blank" rel="noopener">map</a> · <a href="https://bavarian-outfitters.de" target="_blank" rel="noopener">attire booking</a></div></div><div class="meta"><b>$90–130</b><span class="when">gates at 9:30 am</span> · full day</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-2" class="extra" data-bucket="do" data-cost="5" data-name="Oide Wiesn entry" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-2">Oide Wiesn <span class="tag sug">suggested</span></label><div class="d">The "old Oktoberfest" corner at the south end: historic rides, brass bands, calmer tents, small entry fee. Where to go when the big tents get loud.</div><div class="lk"><a href="https://www.oktoberfest.de/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Oide+Wiesn+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$5</b><span class="when">afternoon</span> · + drinks</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-3" class="proxy" data-opt="o-sunbeer" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-3">A Sunday-evening lap <span class="tag sug">suggested</span></label><div class="d">Scout tents, ride something, one Maß. Good jet-lag cure; not the main event.</div><div class="lk"><a href="https://www.oktoberfest.de/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Theresienwiese+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$30–40</b><span class="when">evening</span></div></div>
+        <div class="sub">Sights</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-4" class="proxy" data-opt="o-dachau" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-4">Dachau Memorial Site <span class="tag sug">suggested</span></label><div class="d">Free; audio guide ~€4.50. Open daily 9–5. S2 + bus 726, about 45 min. Allow three hours.</div><div class="lk"><a href="https://www.kz-gedenkstaette-dachau.de/en/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=KZ-Gedenkst%C3%A4tte+Dachau" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$6</b><span class="when">morning</span> · half day</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-101" class="extra" data-bucket="do" data-cost="0" data-note="free" data-name="Marienplatz & Glockenspiel" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-101">Marienplatz &amp; the Glockenspiel <span class="tag list">on our list</span></label><div class="d">The center of town. The Glockenspiel runs at 11 and 12 — arrive a few minutes early (from the list note).</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Marienplatz" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Marienplatz+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>free</b><span class="when">11 am / 12 pm</span> · 1 hour</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-102" class="extra" data-bucket="do" data-cost="0" data-note="free" data-name="English Garden & Eisbach" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-102">English Garden &amp; the Eisbach wave <span class="tag list">on our list</span></label><div class="d">Bigger than Central Park. River surfers at the south end, beer garden at the Chinese Tower in the middle.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Englischer_Garten" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Englischer+Garten+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>free</b><span class="when">afternoon</span> · 2–3 hours</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-103" class="extra" data-bucket="do" data-cost="0" data-note="free" data-name="Olympiapark at golden hour" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-103">Olympiapark at golden hour <span class="tag list">on our list</span></label><div class="d">The list says "recommended for a golden hour visit." Climb the Olympiaberg for sunset over the city and, on a clear day, the Alps. U3 from the center.</div><div class="lk"><a href="https://www.olympiapark.de/en" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Olympiapark+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>free</b><span class="when">golden hour</span> · evening</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-8" class="extra" data-bucket="do" data-cost="30" data-name="Allianz Arena tour" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-8">Allianz Arena tour <span class="tag sug">suggested</span></label><div class="d">No match falls in our dates (Bayern played Fri the 18th; the 26th is an international break), but the stadium tour runs daily. 30 min from the center.</div><div class="lk"><a href="https://allianz-arena.com/en/events" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Allianz+Arena" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$30</b><span class="when">anytime</span> · half day</div></div>
+        <div class="sub">Food &amp; drink</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-9" class="proxy" data-opt="o-coffee" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-9">Man Versus Machine Coffee Roasters <span class="tag list">on our list</span></label><div class="d">Best coffee in Munich. Near Müllerstraße, on the way to most things.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Man+Versus+Machine+Coffee+Roasters+M%C3%BCnchen" target="_blank" rel="noopener">map &amp; menu</a></div></div><div class="meta"><b>$8</b><span class="when">morning</span> · stop</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-104" class="proxy" data-opt="o-food22" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-104">Viktualienmarkt <span class="tag list">on our list</span></label><div class="d">Open-air food market with its own beer garden. Easy group lunch — everyone picks their own stall.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Viktualienmarkt" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Viktualienmarkt+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$15–25</b><span class="when">lunch</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-105" class="proxy" data-opt="o-food22" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-105">Chinese Tower beer garden <span class="tag sug">suggested</span></label><div class="d">7,000 seats in the middle of the English Garden. Bring your own food or buy there; beer is the point.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Chinesischer_Turm" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Chinesischer+Turm+Biergarten+M%C3%BCnchen" target="_blank" rel="noopener">map &amp; menu</a></div></div><div class="meta"><b>$15</b><span class="when">afternoon</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-106" class="proxy" data-opt="o-sunbeer" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-106">Giesinger Bräu Stehausschank, Maxvorstadt <span class="tag list">on our list</span></label><div class="d">Standing beer bar from a small local brewery, €1–10. Low-key first-night spot.</div><div class="lk"><a href="https://www.giesinger-braeu.de" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Giesinger+Br%C3%A4u+Stehausschank+Maxvorstadt" target="_blank" rel="noopener">map &amp; menu</a></div></div><div class="meta"><b>$10</b><span class="when">evening</span> · drinks</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-107" class="proxy" data-opt="o-food22" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-107">Herrschaftszeiten — Das Paulaner <span class="tag list">on our list</span></label><div class="d">Bavarian, €20–30 mains. Solid dinner pick near the center.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Herrschaftszeiten+Das+Paulaner+M%C3%BCnchen" target="_blank" rel="noopener">map &amp; menu</a></div></div><div class="meta"><b>$35</b><span class="when">dinner</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-108" class="proxy" data-opt="o-food22" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-108">Mozzamo <span class="tag list">on our list</span></label><div class="d">Italian, €20–30. The non-schnitzel option.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=MOZZAMO+M%C3%BCnchen" target="_blank" rel="noopener">map &amp; menu</a></div></div><div class="meta"><b>$35</b><span class="when">dinner</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-15" class="proxy" data-opt="o-ory" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-15">Ory Bar <span class="tag list">on our list</span></label><div class="d">Cocktails at the Mandarin Oriental, €20–60. A nightcap, not a session.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Ory+Bar+M%C3%BCnchen" target="_blank" rel="noopener">map &amp; menu</a></div></div><div class="meta"><b>$35</b><span class="when">late</span> · drinks</div></div>
+        <div class="sub">Shopping &amp; leisure</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-16" class="extra" data-bucket="do" data-cost="10" data-name="Müller'sches Volksbad" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-16">Müller'sches Volksbad <span class="tag sug">suggested</span></label><div class="d">Art nouveau public pool and sauna by the Isar, 1901. The cure for the day after Oktoberfest.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/M%C3%BCllersches_Volksbad" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=M%C3%BCllersches+Volksbad+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$10</b><span class="when">morning after</span> · 2 h</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-109" class="extra" data-bucket="do" data-cost="0" data-note="varies" data-name="Dallmayr" aria-label="Add to my estimate"><span class="nobox">pay as you go</span></div><div><label class="t tap" for="i-109">Dallmayr <span class="tag sug">suggested</span></label><div class="d">The 300-year-old delicatessen behind Marienplatz — coffee, chocolate, and the best edible souvenirs in town.</div><div class="lk"><a href="https://www.dallmayr.com/en/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Dallmayr+Dienerstra%C3%9Fe+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>varies</b><span class="when">anytime</span> · 30 min</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-110" class="extra" data-bucket="do" data-cost="0" data-note="varies" data-name="Manufactum / Sendlinger Straße" aria-label="Add to my estimate"><span class="nobox">pay as you go</span></div><div><label class="t tap" for="i-110">Manufactum &amp; the Sendlinger Straße stretch <span class="tag sug">suggested</span></label><div class="d">German-made everything (knives, tools, stationery) in the old post office, then the less-touristy shopping street toward Sendlinger Tor.</div><div class="lk"><a href="https://www.manufactum.de" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Manufactum+M%C3%BCnchen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>varies</b><span class="when">anytime</span> · 1–2 h</div></div>
+        <div class="sub">Day trips</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-19" class="proxy" data-opt="o-daytrip" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-19">Neuschwanstein or Salzburg <span class="tag sug">suggested</span> <span class="tag warn">costs a full day</span></label><div class="d">Both are 2 h each way. Doing one means seeing almost nothing of Munich. Listed so it's a conscious choice.</div><div class="lk"><a href="https://www.neuschwanstein.de/englisch/" target="_blank" rel="noopener">Neuschwanstein info</a> · <a href="https://www.hohenschwangau.de/en/" target="_blank" rel="noopener">tickets</a> · <a href="https://www.google.com/maps/search/?api=1&query=Salzburg+Altstadt" target="_blank" rel="noopener">Salzburg map</a></div></div><div class="meta"><b>$60–90</b><span class="when">full day</span></div></div>
+      </div>
+    </div>
+
+    <div class="loc">
+      <h3>Grindelwald — Wed 23 to Sun 27</h3>
+      <div class="locsub">Arrival evening plus three full days. Late September: lifts open, fewer crowds, snow possible above 2,500 m. Whichever day has the best forecast should get the big-mountain outing.</div>
+      <div class="ideas">
+        <div class="sub">Hikes &amp; summits</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-20" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-20">Bachalpsee <span class="tag list">on our list</span></label><div class="d">Alpine lake 50 min on foot from the First top station, flat the whole way. Mirrors the Schreckhorn on a still morning. The start of both hikes below.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bachalpsee" target="_blank" rel="noopener">map</a> · <a href="https://swissfamilyfun.com/jungfrau-travel-pass/" target="_blank" rel="noopener">lift prices</a></div></div><div class="meta"><b>$90</b><span class="when">early, before clouds</span> · First lift · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-111" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-111">Bachalpsee → Waldspitz → Bort <span class="tag list">on our list</span></label><div class="d">The list note says "here to Waldspitz hike." Mostly downhill 3–4 h from the lake, alpine hut partway, ends at the Bort gondola station.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Waldspitz+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$0 extra</b><span class="when">morning start</span> · moderate</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-22" class="proxy" data-opt="o-first" aria-label="Add to my estimate"><span class="nobox">needs First lift</span></div><div><label class="t tap" for="i-22">Faulhorn summit from Bachalpsee <span class="tag sug">suggested</span></label><div class="d">The harder version: +600 m to 2,681 m, 1.5 h up, 360° of the Oberland. Instead of Waldspitz if the group wants a summit.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Faulhorn" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Faulhorn" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$0 extra</b><span class="when">morning start</span> · hard</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-23" class="proxy" data-opt="o-mann" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-23">Männlichen → Kleine Scheidegg → Eiger Trail <span class="tag sug">suggested</span></label><div class="d">Gondola up, 90-min Panorama Trail with the Eiger north face in view, then 2.5 h down the Eiger Trail to Alpiglen. The hikers' alternative to Jungfraujoch at a third of the cost.</div><div class="lk"><a href="https://www.maennlichen.ch/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=M%C3%A4nnlichen" target="_blank" rel="noopener">map</a> · <a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">prices</a></div></div><div class="meta"><b>$75</b><span class="when">morning start</span> · full day · moderate</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-24" class="proxy" data-opt="o-oesch" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-24">Oeschinen Lake &amp; the Heuberg loop <span class="tag list">on our list</span></label><div class="d">Train to Kandersteg (~1 h 45), gondola, 20-min walk to the lake. The ledge loop above it (2–3 h) is the best view in the Oberland. Rowboats, mountain coaster.</div><div class="lk"><a href="https://www.oeschinensee.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Oeschinensee" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$100</b><span class="when">morning start</span> · full day · moderate</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-25" class="proxy" data-opt="o-augst" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-25">Hardergrat <span class="tag list">on our list</span> <span class="tag warn">read this</span></label><div class="d">The full ridge is ~24 km, 10–12+ hours, knife-edge, no water, no bail-outs; people die on it most years. Not for this trip. The sane version — Lombachalp → Augstmatthorn and back, 4–5 h — gets the same ridge views.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Augstmatthorn" target="_blank" rel="noopener">map (Augstmatthorn)</a> · <a href="https://www.google.com/maps/search/?api=1&query=Hardergrat" target="_blank" rel="noopener">map (full ridge)</a></div></div><div class="meta"><b>$20</b><span class="when">morning start</span> · bus · hard</div></div>
+        <div class="sub">Lifts &amp; big-ticket views</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-26" class="proxy" data-opt="o-jj" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-26">Jungfraujoch, "Top of Europe" <span class="tag sug">suggested</span></label><div class="d">Eiger Express gondola, then cog train through the mountain to 3,454 m. Ice palace, glacier, snow. Expensive and touristy; unforgettable if clear, a waste in cloud. CHF 10 seat reservation is mandatory.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Jungfraujoch" target="_blank" rel="noopener">map</a> · <a href="https://www.myswissalps.com/activity/jungfraujoch/" target="_blank" rel="noopener">prices by pass</a></div></div><div class="meta"><b>$240</b><span class="when">early, before clouds</span> · 5–6 h · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-27" class="proxy" data-opt="o-first" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-27">First gondola &amp; Cliff Walk <span class="tag sug">suggested</span></label><div class="d">Up from the village in 25 min. The Cliff Walk is free at the top. This is the lift for Bachalpsee, Waldspitz, Faulhorn, and the ziplines. CHF 76 full fare, half with Half Fare Card or BO Pass.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Firstbahn+Grindelwald" target="_blank" rel="noopener">map</a> · <a href="https://swissfamilyfun.com/jungfrau-travel-pass/" target="_blank" rel="noopener">prices</a></div></div><div class="meta"><b>$90</b><span class="when">early, before clouds</span> · half day · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-28" class="proxy" data-opt="o-pfing" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-28">Luftseilbahn Grindelwald Pfingstegg <span class="tag list">on our list</span></label><div class="d">Small cable car right in the village to a terrace above the glacier gorge. Toboggan run and the Fly Line tree-top zip at the top.</div><div class="lk"><a href="https://www.pfingstegg.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Luftseilbahn+Grindelwald+Pfingstegg" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$55</b><span class="when">afternoon</span> · half day · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-29" class="proxy" data-opt="o-beatus" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-29">Harder Kulm at sunset <span class="tag sug">suggested</span></label><div class="d">Funicular from Interlaken to a terrace over both lakes and the Eiger–Mönch–Jungfrau line.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/harder-kulm/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Harder+Kulm" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$48</b><span class="when">sunset</span> · 2 h · easy</div></div>
+        <div class="sub">Adrenaline</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-30" class="proxy" data-opt="o-sky" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-30">Skydiving over the Alps <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">Airplane jump from Interlaken, half a day, weather-dependent. Book early.</div><div class="lk"><a href="https://www.getyourguide.com/grindelwald-l1613/sky-diving-tc87/" target="_blank" rel="noopener">prices &amp; booking</a> · <a href="https://www.google.com/maps/search/?api=1&query=Interlaken" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$540</b><span class="when">morning</span> · half day</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-31" class="proxy" data-opt="o-para" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-31">Tandem paragliding <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">Launch from First, land in the village. 12–20 min in the air, ~1.5 h all in. Pilots fly smooth or acrobatic on request. Book a week out for six.</div><div class="lk"><a href="https://www.paragliding-interlaken.ch" target="_blank" rel="noopener">info</a> · <a href="https://www.getyourguide.com/interlaken-l793/paragliding-tc90/" target="_blank" rel="noopener">prices &amp; booking</a></div></div><div class="meta"><b>$230</b><span class="when">morning or afternoon</span> · +$45 photos</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-32" class="proxy" data-opt="o-swing" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-32">Canyon swing <span class="tag sug">suggested</span> <span class="tag go">adrenaline</span></label><div class="d">A 90 m drop into the Gletscherschlucht, in the village. 2–3 h including the walk in.</div><div class="lk"><a href="https://www.outdoor.ch/en/" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Gletscherschlucht+Grindelwald" target="_blank" rel="noopener">map</a> · <a href="https://www.getyourguide.com/grindelwald-l1613/sky-diving-tc87/" target="_blank" rel="noopener">prices &amp; booking</a></div></div><div class="meta"><b>$180</b><span class="when">afternoon</span> · 2–3 h</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-33" class="proxy" data-opt="o-cart" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-33">Mountain carts / trottibikes <span class="tag sug">suggested</span></label><div class="d">Freewheel from Bort back into Grindelwald on a cart or oversized scooter. Helmets included.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Bort+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$25</b><span class="when">on the way down</span> · 45 min</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-34" class="proxy" data-opt="o-zip" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-34">First Flyer &amp; First Glider <span class="tag sug">suggested</span></label><div class="d">Two ziplines from the First top station, ~CHF 31 each. Short, fast, fun once.</div><div class="lk"><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=First+Flyer+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$75</b><span class="when">anytime up top</span> · 30 min</div></div>
+        <div class="sub">Easy days &amp; leisure</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-35" class="proxy" data-opt="o-beatus" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-35">St. Beatus-Höhlen, Swiss Caves <span class="tag list">on our list</span></label><div class="d">Cave system above Lake Thun, an hour inside. Bus from Interlaken along the lake.</div><div class="lk"><a href="https://www.beatushoehlen.swiss" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=St.+Beatus-H%C3%B6hlen" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$24</b><span class="when">midday</span> · 2 h · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-36" class="extra" data-bucket="do" data-cost="40" data-name="Lake Brienz boat" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-36">Lake Brienz boat <span class="tag sug">suggested</span></label><div class="d">The turquoise one. Boats from Interlaken Ost; free with the Berner Oberland Pass. Pairs with Harder Kulm.</div><div class="lk"><a href="https://www.bls.ch/en/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Interlaken+Ost+Schiffstation" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$40</b><span class="when">afternoon</span> · 2–3 h · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-37" class="extra" data-bucket="do" data-cost="20" data-name="Sportzentrum Grindelwald" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-37">Sportzentrum Grindelwald <span class="tag sug">suggested</span></label><div class="d">Village pool, sauna, and spa a few minutes from the house. For sore legs.</div><div class="lk"><a href="https://www.sportzentrum-grindelwald.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Sportzentrum+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$20</b><span class="when">evening</span> · 2 h</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-38" class="extra" data-bucket="do" data-cost="23" data-name="Gletscherschlucht entry" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-38">Gletscherschlucht <span class="tag sug">suggested</span></label><div class="d">Catwalks through the glacier gorge, 20 min from the house on foot. Good for arrival evening or a rest day.</div><div class="lk"><a href="https://www.outdoor.ch/en/" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Gletscherschlucht+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$23</b><span class="when">evening or rest day</span> · 1 h · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-39" class="proxy" data-opt="o-laut" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-39">Lauterbrunnen, Trümmelbach Falls, Mürren <span class="tag sug">suggested</span></label><div class="d">The valley next door: 72 waterfalls, glacier falls inside the rock, and a car-free village on a cliff. A lazy alternative to any big day.</div><div class="lk"><a href="https://www.truemmelbachfaelle.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Tr%C3%BCmmelbachf%C3%A4lle" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$50</b><span class="when">anytime</span> · half day · easy</div></div>
+        <div class="sub">Food &amp; shopping</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-40" class="proxy" data-opt="o-groc" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-40">Coop by the station <span class="tag sug">suggested</span></label><div class="d">The house has a kitchen and restaurant mains run CHF 30–45. One big shop on arrival covers breakfasts and two dinners.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Coop+Grindelwald" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$60</b><span class="when">on arrival</span> · split six ways</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-41" class="proxy" data-opt="o-rosti" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-41">Hut food on the mountain <span class="tag sug">suggested</span></label><div class="d">Waldspitz, Bort, Kleine Scheidegg — rösti, soup, a beer, cash. Not cheap, but part of the day.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Berggasthaus+Waldspitz" target="_blank" rel="noopener">map (Waldspitz hut)</a> · <a href="https://www.google.com/maps/search/?api=1&query=Kleine+Scheidegg" target="_blank" rel="noopener">map (Kleine Scheidegg)</a></div></div><div class="meta"><b>$35</b><span class="when">lunch</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-112" class="extra" data-bucket="do" data-cost="0" data-note="varies" data-name="Interlaken Höheweg shopping" aria-label="Add to my estimate"><span class="nobox">pay as you go</span></div><div><label class="t tap" for="i-112">Interlaken's Höheweg <span class="tag sug">suggested</span></label><div class="d">If anyone wants a Swiss army knife or a watch, this is the strip. Grindelwald village has a few sports shops and not much else.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=H%C3%B6heweg+Interlaken" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>varies</b><span class="when">anytime</span> · 1 h</div></div>
+      </div>
+    </div>
+
+    <div class="loc">
+      <h3>Zürich — Sun 27 to Tue 29</h3>
+      <div class="locsub">One full day, a Monday, the day before a transatlantic flight. Museums are closed Mondays; the lake and the old town are not.</div>
+      <div class="ideas">
+        <div class="sub">Sights</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-113" class="extra" data-bucket="do" data-cost="0" data-note="free" data-name="Zürich old town walk" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-113">Old town walk <span class="tag sug">suggested</span></label><div class="d">Bahnhofstrasse → Lindenhof (the view) → St. Peter → Fraumünster (Chagall windows) → over the river to Grossmünster and the Niederdorf lanes. Two unhurried hours.</div><div class="lk"><a href="https://www.zuerich.com/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Lindenhof+Z%C3%BCrich" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>free</b><span class="when">morning</span> · 2–3 h</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-44" class="proxy" data-opt="o-uetli" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-44">Uetliberg <span class="tag sug">suggested</span></label><div class="d">Zürich's home mountain, 20 min by train from HB, short walk to the tower. Lake, city, and Alps in one view.</div><div class="lk"><a href="https://en.wikipedia.org/wiki/Uetliberg" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Uetliberg" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$15</b><span class="when">morning or sunset</span> · half day · easy</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-45" class="proxy" data-opt="o-bath" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-45">Lake: baths or the boat <span class="tag sug">suggested</span></label><div class="d">Seebad Utoquai or Enge if it's warm (CHF 8); otherwise the ferry to Zürichhorn and a walk back along the shore.</div><div class="lk"><a href="https://www.zuerich.com/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Seebad+Utoquai+Z%C3%BCrich" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$10</b><span class="when">afternoon</span> · 2 h</div></div>
+        <div class="sub">Food &amp; drink</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-46" class="proxy" data-opt="o-zfood" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-46">Zeughauskeller / Haus Hiltl <span class="tag sug">suggested</span></label><div class="d">The old armory for sausages and Geschnetzeltes; the world's oldest vegetarian restaurant for a buffet by weight.</div><div class="lk"><a href="https://www.zeughauskeller.ch" target="_blank" rel="noopener">Zeughauskeller</a> · <a href="https://hiltl.ch" target="_blank" rel="noopener">Hiltl</a> · <a href="https://www.google.com/maps/search/?api=1&query=Zeughauskeller+Z%C3%BCrich" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$30–40</b><span class="when">lunch</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-47" class="proxy" data-opt="o-fondue" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-47">Fondue night <span class="tag sug">suggested</span></label><div class="d">It's the last dinner. Niederdorf has a dozen places. CHF 35–50 a head.</div><div class="lk"><a href="https://www.google.com/maps/search/?api=1&query=Fondue+Niederdorf+Z%C3%BCrich" target="_blank" rel="noopener">map &amp; menus</a></div></div><div class="meta"><b>$60</b><span class="when">dinner</span></div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-48" class="proxy" data-opt="o-zfood" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-48">Zürich West <span class="tag sug">suggested</span></label><div class="d">Frau Gerolds Garten (shipping-container beer garden) and the Im Viadukt arches. Evening.</div><div class="lk"><a href="https://www.fraugerold.ch" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Frau+Gerolds+Garten+Z%C3%BCrich" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$40</b><span class="when">evening</span></div></div>
+        <div class="sub">Shopping &amp; leisure</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-49" class="extra" data-bucket="do" data-cost="50" data-name="Thermalbad & Spa Zürich" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-49">Thermalbad &amp; Spa Zürich <span class="tag sug">suggested</span></label><div class="d">Rooftop thermal pool in a converted brewery, looking over the city. The best possible use of the last afternoon.</div><div class="lk"><a href="https://www.thermalbad-zuerich.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Thermalbad+%26+Spa+Z%C3%BCrich" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$50</b><span class="when">afternoon</span> · 2–3 h</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-114" class="extra" data-bucket="do" data-cost="0" data-note="varies" data-name="Freitag tower" aria-label="Add to my estimate"><span class="nobox">pay as you go</span></div><div><label class="t tap" for="i-114">Freitag tower <span class="tag sug">suggested</span></label><div class="d">The bag brand's flagship, built from shipping containers in Zürich West. Rooftop view thrown in.</div><div class="lk"><a href="https://www.freitag.ch" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=FREITAG+Store+Z%C3%BCrich+Tower" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>varies</b><span class="when">anytime</span> · 30 min</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-115" class="extra" data-bucket="do" data-cost="0" data-note="varies" data-name="Bahnhofstrasse & Sprüngli" aria-label="Add to my estimate"><span class="nobox">pay as you go</span></div><div><label class="t tap" for="i-115">Bahnhofstrasse &amp; Sprüngli <span class="tag sug">suggested</span></label><div class="d">The famous shopping street; Sprüngli at Paradeplatz for Luxemburgerli macarons to carry home.</div><div class="lk"><a href="https://www.spruengli.ch" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Spr%C3%BCngli+Paradeplatz+Z%C3%BCrich" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>varies</b><span class="when">anytime</span> · 1 h</div></div>
+        <div class="sub">Out of town</div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-52" class="proxy" data-opt="o-rhine" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-52">Rhine Falls <span class="tag sug">suggested</span></label><div class="d">Europe's biggest waterfall by volume, ~1 h by train. A half day that still leaves the afternoon for the city.</div><div class="lk"><a href="https://www.rheinfall.ch" target="_blank" rel="noopener">info &amp; prices</a> · <a href="https://www.google.com/maps/search/?api=1&query=Rheinfall" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$30</b><span class="when">morning</span> · half day</div></div>
+        <div class="idea"><div class="ibox"><input type="checkbox" id="i-53" class="extra" data-bucket="do" data-cost="70" data-name="Lucerne day trip" aria-label="Add to my estimate"></div><div><label class="t tap" for="i-53">Lucerne <span class="tag sug">suggested</span> <span class="tag warn">probably not</span></label><div class="d">Beautiful, but 2.5 h of round-trip travel the day before an 11:55 flight, after four days of mountains.</div><div class="lk"><a href="https://www.luzern.com/en" target="_blank" rel="noopener">info</a> · <a href="https://www.google.com/maps/search/?api=1&query=Luzern+Kapellbr%C3%BCcke" target="_blank" rel="noopener">map</a></div></div><div class="meta"><b>$70</b><span class="when">full day</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ PAGE 2: PLAN ============ -->
+<div class="panel" id="p-plan">
+<nav class="strip" aria-label="Jump to a day">
+  <div class="wrap">
+    <a href="#d19"><b>19</b><span>Sat · fly</span></a>
+    <a href="#d20" class="m"><b>20</b><span>Sun · MUC</span></a>
+    <a href="#d21" class="m"><b>21</b><span>Mon · Wiesn</span></a>
+    <a href="#d22" class="m"><b>22</b><span>Tue · Dachau</span></a>
+    <a href="#d23" class="g"><b>23</b><span>Wed · train</span></a>
+    <a href="#d24" class="g"><b>24</b><span>Thu · First</span></a>
+    <a href="#d25" class="g"><b>25</b><span>Fri · Eiger</span></a>
+    <a href="#d26" class="g"><b>26</b><span>Sat · lake</span></a>
+    <a href="#d27" class="z"><b>27</b><span>Sun · train</span></a>
+    <a href="#d28" class="z"><b>28</b><span>Mon · ZRH</span></a>
+    <a href="#d29"><b>29</b><span>Tue · home</span></a>
+  </div>
+</nav>
+
+<section class="block" id="stays">
+  <div class="wrap">
+    <h2>Where we're sleeping</h2>
+    <div class="stays">
+      <div class="stay">
+        <h3>WunderLocke, Sendling</h3>
+        <div class="dates">Sun 20 → Wed 23 Sept · booked</div>
+        <dl>
+          <dt>Rooms</dt><dd>Loft-style, 2 full beds per room</dd>
+          <dt>Ref</dt><dd>B86179505 (Meghan)</dd>
+          <dt>Cost</dt><dd>$2,200 total · $366.67 each</dd>
+          <dt>Getting in</dt><dd>~38 min drive from MUC; ~11 min to the Wiesn</dd>
+          <dt>Link</dt><dd><a href="https://www.lockeliving.com/en/munich/wunderlocke" target="_blank" rel="noopener">lockeliving.com</a></dd>
+        </dl>
+      </div>
+      <div class="stay">
+        <h3>Home in Grindelwald</h3>
+        <div class="dates">Wed 23 → Sun 27 Sept · booked</div>
+        <dl>
+          <dt>Address</dt><dd>Locherbodenstrasse 29</dd>
+          <dt>Host</dt><dd>Daniel (Airbnb)</dd>
+          <dt>Check-in</dt><dd>4:00 pm · out 10:00 am</dd>
+          <dt>Cost</dt><dd>$2,567 total · $427.83 each</dd>
+          <dt>Link</dt><dd><a href="https://www.airbnb.com/rooms/1044812419398779615?adults=6" target="_blank" rel="noopener">Airbnb listing</a></dd>
+        </dl>
+      </div>
+      <div class="stay">
+        <h3>Zürich hotel (Kameha Grand)</h3>
+        <div class="dates">Sun 27 → Tue 29 Sept · booked, rooms TBD</div>
+        <dl>
+          <dt>Rate</dt><dd>$204 / room / night, taxes in</dd>
+          <dt>3 rooms</dt><dd>$1,224 total · $204 each</dd>
+          <dt>4 rooms</dt><dd>$1,632 total · $272 each</dd>
+          <dt>Split</dt><dd>TBD</dd>
+          <dt>Link</dt><dd><a href="https://www.kamehagrandzuerich.com/en/" target="_blank" rel="noopener">kamehagrandzuerich.com</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="heads-up transit">
+      <b>Zürich hotel → old town.</b> The hotel is by the airport; the center is 15 minutes away by transit, and the old town is a 10-minute walk from Zürich HB.
+      <table class="mini">
+        <tr><th></th><th>Catch it at</th><th>Runs</th><th>To Zürich HB</th><th>To airport</th></tr>
+        <tr><td>S-Bahn</td><td>Opfikon station, short walk</td><td>every 15 min</td><td>11 min</td><td>5 min</td></tr>
+        <tr><td>Tram 10</td><td>Glattpark stop, 300 m</td><td>every 7–15 min</td><td>25 min</td><td>9 min</td></tr>
+      </table>
+      Both run about 5:30 am–12:30 am. No late-night service on Sunday or Monday nights — after 12:30 am it's a CHF 40–50 taxi.
+    </div>
+  </div>
+</section>
+
+<section class="block" id="days">
+  <div class="wrap">
+    <h2>One way it could go</h2>
+    <p class="intro">This arranges the ideas list into days so the logistics are visible — what's a morning thing, what needs a clear sky, what's near what. Every day ends with a <b>swap</b> note. Bold times are fixed by tickets or check-ins; grey ones are suggestions. Tick anything on the right and it shows up on your Costs page.</p>
+
+    <article class="day" id="d19">
+      <div class="day-head"><div class="num">19<small>SAT</small></div><div><h3>Fly out</h3><div class="where">Tampa → Chicago → Munich · overnight · <b>United / Lufthansa, Basic Economy</b></div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>2:00 pm</time><p>Be at TPA. Basic Economy boards last; check in online the night before. <span class="note">Confirm carry-on rules for the Lufthansa leg in the United app.</span></p></li>
+            <li><time>4:23 pm</time><p>UA 1010 to Chicago O'Hare, lands 6:31 pm</p></li>
+            <li><time>9:40 pm</time><p>UA 8854 (operated by Lufthansa) to Munich, 8h 30m</p></li>
+          </ul>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt fixed"><input type="checkbox" id="o-flight" data-bucket="travel" data-cost="1200" data-name="Flights (round trip)" checked disabled><label for="o-flight"><span class="t">Round-trip flights <span class="tag all">everyone</span></span><div class="d">Already paid individually, ~$1,200 each.</div></label><div class="price">$1,200</div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d20">
+      <div class="day-head"><div class="num">20<small>SUN</small></div><div><h3>Land, settle in, first look at the Wiesn</h3><div class="where">Munich · sleep at <b>WunderLocke</b></div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>1:10 pm</time><p>Land MUC. Passport control, bags, then S-Bahn S1 or S8 toward the city (~45 min). <span class="note">An MVV group day ticket covers up to 5 adults — two tickets for six.</span></p></li>
+            <li class="flex"><time>~3:30</time><p>Check in at WunderLocke, Sendling. Shower, don't nap. <span class="note">It's Sunday: shops are closed, restaurants and the Wiesn are open.</span></p></li>
+            <li class="flex"><time>~5:30</time><p>Walk 20 min to Theresienwiese for a first lap of Oktoberfest — scout tents for Monday, one Maß max.</p></li>
+            <li class="flex"><time>dinner</time><p>Giesinger Bräu Stehausschank. Bed by 10 to reset the clock.</p></li>
+          </ul>
+          <div class="swap"><b>Swap:</b> skip the Wiesn tonight and do English Garden + Chinese Tower beer garden instead, saving the first Oktoberfest impression for Monday in costume.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt fixed"><input type="checkbox" id="o-wl" data-bucket="travel" data-cost="366.67" data-name="WunderLocke (3 nights)" checked disabled><label for="o-wl"><span class="t">WunderLocke, 3 nights <span class="tag all">everyone</span></span><div class="d">$2,200 ÷ 6.</div></label><div class="price">$367</div></div>
+          <div class="opt"><input type="checkbox" id="o-mvv" data-bucket="travel" data-cost="30" data-name="Munich transit (3 days)"><label for="o-mvv"><span class="t">Munich transit, 3 days</span><div class="d">Airport in plus getting around. Roughly €27. <a href="https://www.mvv-muenchen.de/en" target="_blank" rel="noopener">MVV</a></div></label><div class="price">$30<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-sunbeer" data-bucket="food" data-cost="40" data-name="Sunday Wiesn scouting + dinner"><label for="o-sunbeer"><span class="t">Sunday Wiesn + dinner</span><div class="d">One Maß (~€16), a pretzel, dinner at Giesinger.</div></label><div class="price">$40<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d21">
+      <div class="day-head"><div class="num">21<small>MON</small></div><div><h3>Oktoberfest, properly</h3><div class="where">Munich · <b>attire rental is booked for today</b> · sleep at WunderLocke</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>opens</time><p>Pick up lederhosen/dirndls at <b>Bavarian Outfitters, Lindwurmstr. 108</b> — in our neighborhood, 5 min from the Wiesn. Confirm Monday opening time and all six reservations. <a href="https://bavarian-outfitters.de" target="_blank" rel="noopener">bavarian-outfitters.de</a></p></li>
+            <li><time>9:30 am</time><p>Be at the Theresienwiese gates. Tents open at 10 on weekdays. <span class="note">Suggested order: Augustiner-Festhalle → Bräurosl → Hofbräu's outdoor garden → Hacker. Split 3+3 if a full bench doesn't appear.</span></p></li>
+            <li class="flex"><time>midday</time><p>Eat early and big — half chicken, Käsespätzle. ~€16 a Maß; cash still wins at many tables.</p></li>
+            <li class="flex"><time>~4 pm</time><p>Walk it off: rides (Olympia Looping), then the Bavaria statue for the view back over the tents.</p></li>
+            <li class="flex"><time>evening</time><p>Return attire if the shop is open, otherwise first thing Tuesday (check whether next-morning return counts as one day). Ory Bar for a nightcap.</p></li>
+          </ul>
+          <div class="heads-up"><b>Wiesn rules of thumb.</b> No bags bigger than 3 L / A4. Tents stop serving around 10:30 pm. Don't stand on tables. Signal drops inside — set a meeting spot (Bavaria statue) in case the group splits.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt fixed"><input type="checkbox" id="o-attire" data-bucket="do" data-cost="50" data-name="Attire rental (1 day)" checked disabled><label for="o-attire"><span class="t">Attire rental, 1 day <span class="tag all">everyone</span></span><div class="d">Called $50; exact tier to confirm on the booking.</div></label><div class="price">$50</div></div>
+          <div class="opt"><input type="checkbox" id="o-wiesn" data-bucket="food" data-cost="110" data-name="Oktoberfest day (food, beer, rides)"><label for="o-wiesn"><span class="t">Oktoberfest day budget <span class="tag go">the point of the trip</span></span><div class="d">Four Maß, a proper meal, a pretzel, two rides, tips. $90–130 is realistic.</div></label><div class="price">$110<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-ory" data-bucket="food" data-cost="35" data-name="Ory Bar nightcap"><label for="o-ory"><span class="t">Ory Bar nightcap</span><div class="d">One round.</div></label><div class="price">$35<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d22">
+      <div class="day-head"><div class="num">22<small>TUE</small></div><div><h3>Dachau, then the city</h3><div class="where">Munich · sleep at WunderLocke</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>8:30 am</time><p>Return attire if not done. S2 to Dachau, bus 726 to the memorial — about 45 min.</p></li>
+            <li><time>9:30 am</time><p><b>Dachau Memorial Site.</b> Free; audio guide ~€4.50. Allow 2.5–3 hours. Open daily; Tuesday keeps Monday clear for the Wiesn.</p></li>
+            <li class="flex"><time>~1 pm</time><p>Back to the center. Lunch from the Viktualienmarkt stalls, sit in its beer garden.</p></li>
+            <li class="flex"><time>~2:30</time><p>Marienplatz (the Glockenspiel is at 11 and 12, so you'll miss it unless you cut Dachau short), Residenz gardens, then the English Garden — Eisbach surfers, beer at the Chinese Tower.</p></li>
+            <li class="flex"><time>golden hr</time><p>Olympiapark, Olympiaberg for sunset. Optional.</p></li>
+            <li class="flex"><time>dinner</time><p>Herrschaftszeiten or Mozzamo. Pack tonight; early train tomorrow.</p></li>
+          </ul>
+          <div class="swap"><b>Swap:</b> anyone who'd rather not do Dachau can do Marienplatz at 11 for the Glockenspiel, the market, and meet the others at the English Garden. Or trade the whole day for Neuschwanstein/Salzburg — but that's the last Munich day gone.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt"><input type="checkbox" id="o-dachau" data-bucket="do" data-cost="6" data-name="Dachau audio guide"><label for="o-dachau"><span class="t">Dachau audio guide</span><div class="d">Entry is free; transit is on the MVV ticket.</div></label><div class="price">$6<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-food22" data-bucket="food" data-cost="70" data-name="Tuesday food + beer gardens"><label for="o-food22"><span class="t">Market lunch, beer garden, dinner</span><div class="d">Viktualienmarkt + Chinese Tower + a €20–30 dinner.</div></label><div class="price">$70<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-coffee" data-bucket="food" data-cost="8" data-name="Man Versus Machine coffee"><label for="o-coffee"><span class="t">Man Versus Machine coffee</span><div class="d">On the list.</div></label><div class="price">$8<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-daytrip" data-bucket="do" data-cost="75" data-name="Neuschwanstein / Salzburg day trip"><label for="o-daytrip"><span class="t">Neuschwanstein or Salzburg instead</span><div class="d">Train + entry. Replaces everything else on this day.</div></label><div class="price">$75<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d23">
+      <div class="day-head"><div class="num">23<small>WED</small></div><div><h3>Train to the Alps</h3><div class="where">Munich → Zürich → Bern → Interlaken → <b>Grindelwald</b> · check-in 4 pm</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>7:00 am</time><p>Check out. U-Bahn to München Hbf.</p></li>
+            <li><time>~7:30</time><p><b>EuroCity to Zürich HB</b>, ~3.5 h, direct. Book on <a href="https://www.bahn.de/en" target="_blank" rel="noopener">bahn.de</a> as one booking for six with seat reservations — Sparpreis Europa fares are cheapest and climb as the date nears.</p></li>
+            <li><time>~11:30</time><p>Zürich HB → Bern (~1 h) → Interlaken Ost (~50 min) → Grindelwald (~35 min). No reservations needed; buy in the <a href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB app</a> or cover with a pass (right).</p></li>
+            <li class="flex"><time>~3 pm</time><p>Arrive. Coop by the station for groceries — restaurants are pricey and the house has a kitchen.</p></li>
+            <li><time>4:00 pm</time><p>Check in, Locherbodenstrasse 29. Evening walk toward the Gletscherschlucht, or just stare at the Eiger.</p></li>
+          </ul>
+          <div class="heads-up"><b>The pass question — each person picks one.</b> Everyone needs Zürich ↔ Grindelwald both ways, and the mountain lifts are à la carte. (1) <b>No pass</b>, buy as you go. (2) <b>Swiss Half Fare Card</b> — halves every Swiss train and most lifts. (3) <b>Berner Oberland Pass</b> — unlimited regional trains, buses, boats, Oeschinensee; First and Harder Kulm at 50%. Rough rule: Jungfraujoch + First + Oeschinensee → BO Pass edges it; skipping Kandersteg → Half Fare Card is simpler and cheaper.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt fixed"><input type="checkbox" id="o-gw" data-bucket="travel" data-cost="427.83" data-name="Grindelwald house (4 nights)" checked disabled><label for="o-gw"><span class="t">Grindelwald house, 4 nights <span class="tag all">everyone</span></span><div class="d">$2,567 ÷ 6.</div></label><div class="price">$428</div></div>
+          <div class="opt fixed"><input type="checkbox" id="o-ec" data-bucket="travel" data-cost="60" data-name="Train Munich → Zürich" checked disabled><label for="o-ec"><span class="t">Train Munich → Zürich <span class="tag all">everyone</span></span><div class="d">Sparpreis Europa, roughly €40–70 if booked now; up to ~€110 walk-up.</div></label><div class="price">$60<small>est.</small></div></div>
+          <div class="opt" data-group="pass"><input type="checkbox" id="o-none" data-bucket="travel" data-cost="200" data-name="Swiss trains, no pass (ZRH↔Grindelwald both ways)"><label for="o-none"><span class="t">1: no pass <span class="tag pick">pick one</span></span><div class="d">Zürich ↔ Grindelwald at full fare, ~CHF 80 each way.</div></label><div class="price">$200<small>est.</small></div></div>
+          <div class="opt" data-group="pass"><input type="checkbox" id="o-half" data-bucket="travel" data-cost="245" data-name="Swiss Half Fare Card + half-price trains"><label for="o-half"><span class="t">2: Half Fare Card <span class="tag pick">pick one</span></span><div class="d">Card ~CHF 120, then both train legs at half. Also halves Jungfraujoch, First, Oeschinensee, Harder Kulm. <a href="https://www.swissrailways.com" target="_blank" rel="noopener">swissrailways.com</a></div></label><div class="price">$245<small>est.</small></div></div>
+          <div class="opt" data-group="pass"><input type="checkbox" id="o-bop" data-bucket="travel" data-cost="400" data-name="Berner Oberland Pass (3-day) + Zürich legs"><label for="o-bop"><span class="t">3: Berner Oberland Pass, 3 days <span class="tag pick">pick one</span></span><div class="d">CHF 240 pass plus Zürich ↔ Bern at full fare. <a href="https://www.berneseoberlandpass.ch" target="_blank" rel="noopener">berneseoberlandpass.ch</a></div></label><div class="price">$400<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-groc" data-bucket="food" data-cost="60" data-name="Groceries + house dinners"><label for="o-groc"><span class="t">Groceries for the house</span><div class="d">Coop run split six ways; breakfasts and two dinners in.</div></label><div class="price">$60<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d24">
+      <div class="day-head"><div class="num">24<small>THU</small></div><div><h3>First, Bachalpsee, and the Waldspitz hike</h3><div class="where">Grindelwald · the day the group list was built around</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>8:30 am</time><p>Walk to the First gondola in the village. Up in 25 min. Go early — clouds build after noon.</p></li>
+            <li class="flex"><time>at top</time><p>First Cliff Walk (free, 20 min). Then the 50-min walk to <b>Bachalpsee</b>.</p></li>
+            <li class="flex"><time>choose</time><p><b>Big version:</b> Bachalpsee → Faulhorn summit → back. <b>List version:</b> Bachalpsee → <b>Waldspitz</b> → Bort ("here to Waldspitz hike" on the map list). Mostly downhill, 3–4 h, rösti at the Waldspitz hut.</p></li>
+            <li class="flex"><time>way down</time><p>At Bort: mountain carts or trottibikes back to Grindelwald. Or the First Flyer / Glider ziplines from the top station before you start.</p></li>
+            <li class="flex"><time>evening</time><p>Dinner in.</p></li>
+          </ul>
+          <div class="heads-up"><b>Paragliding fits here.</b> Tandem launches from First land in the village, 12–20 min in the air, ~1.5 h all in. Book a week out for six; wind may push it to the afternoon.</div>
+          <div class="swap"><b>Swap:</b> this day and Friday are interchangeable — give the clearer forecast to whichever the group cares about more. Flyers can split off for paragliding while hikers do Waldspitz and meet at Bort.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt"><input type="checkbox" id="o-first" data-bucket="do" data-cost="90" data-name="First gondola round trip"><label for="o-first"><span class="t">First gondola, round trip</span><div class="d">CHF 76 full fare · ~$45 with Half Fare or BO Pass.</div></label><div class="price">$90<small>full fare</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-zip" data-bucket="do" data-cost="75" data-name="First Flyer + Glider"><label for="o-zip"><span class="t">First Flyer + First Glider</span><div class="d">Two ziplines, ~CHF 31 each.</div></label><div class="price">$75<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-cart" data-bucket="do" data-cost="25" data-name="Mountain cart / trottibike"><label for="o-cart"><span class="t">Mountain cart or trottibike down</span><div class="d">Bort → Grindelwald.</div></label><div class="price">$25<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-para" data-bucket="do" data-cost="230" data-name="Tandem paragliding"><label for="o-para"><span class="t">Tandem paragliding <span class="tag go">adrenaline</span></span><div class="d">From First. Photos/video ~CHF 40 extra. <a href="https://www.getyourguide.com/interlaken-l793/paragliding-tc90/" target="_blank" rel="noopener">compare operators</a></div></label><div class="price">$230<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-rosti" data-bucket="food" data-cost="35" data-name="Waldspitz hut lunch"><label for="o-rosti"><span class="t">Hut lunch at Waldspitz</span><div class="d">Rösti and a beer. Cash.</div></label><div class="price">$35<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d25">
+      <div class="day-head"><div class="num">25<small>FRI</small></div><div><h3>The Eiger side: Jungfraujoch or the Panorama Trail</h3><div class="where">Grindelwald · flexible — do this on the clearest forecast</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Two versions — can be a split decision</h4>
+          <ul class="tl">
+            <li class="flex"><time>A</time><p><b>Jungfraujoch.</b> Eiger Express from Grindelwald Terminal to Eigergletscher (15 min), cog train to 3,454 m. Ice Palace, Sphinx terrace. Seat reservation (CHF 10) is mandatory. 5–6 h.</p></li>
+            <li class="flex"><time>B</time><p><b>Männlichen → Kleine Scheidegg → Eiger Trail.</b> Gondola up, Panorama Trail (90 min, easy), Eiger Trail down to Alpiglen (2.5 h, steep), train home. A third of the cost.</p></li>
+            <li class="flex"><time>either</time><p>Morning start. Both groups can meet at Kleine Scheidegg for lunch — the Jungfraujoch train passes through it.</p></li>
+            <li class="flex"><time>late pm</time><p><b>Canyon swing</b> at the Gletscherschlucht for whoever wants it. 2–3 h.</p></li>
+          </ul>
+          <div class="heads-up"><b>Weather rule:</b> whichever of Thu/Fri/Sat has the best forecast gets this day. <a href="https://www.meteoswiss.admin.ch" target="_blank" rel="noopener">MeteoSwiss</a> the night before; jungfrau.ch webcams the morning of.</div>
+          <div class="swap"><b>Swap:</b> Lauterbrunnen / Trümmelbach / Mürren is the lazy version of this day — same valley, no summit, half the walking.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt" data-group="eiger"><input type="checkbox" id="o-jj" data-bucket="do" data-cost="240" data-name="Jungfraujoch (full fare + seat fee)"><label for="o-jj"><span class="t">A: Jungfraujoch <span class="tag pick">pick one</span></span><div class="d">~CHF 200 full fare from Grindelwald + CHF 10 seat · ~$145 with Half Fare · ~$185 with BO Pass.</div></label><div class="price">$240<small>full fare</small></div></div>
+          <div class="opt" data-group="eiger"><input type="checkbox" id="o-mann" data-bucket="do" data-cost="75" data-name="Männlichen + Kleine Scheidegg + Eiger Trail"><label for="o-mann"><span class="t">B: Männlichen / Eiger Trail <span class="tag pick">pick one</span></span><div class="d">Gondola up + train back from Alpiglen. Half with Half Fare.</div></label><div class="price">$75<small>est.</small></div></div>
+          <div class="opt" data-group="eiger"><input type="checkbox" id="o-laut" data-bucket="do" data-cost="50" data-name="Lauterbrunnen / Trümmelbach / Mürren"><label for="o-laut"><span class="t">C: Lauterbrunnen valley <span class="tag pick">pick one</span></span><div class="d">Trains + Trümmelbach entry.</div></label><div class="price">$50<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-swing" data-bucket="do" data-cost="180" data-name="Canyon swing"><label for="o-swing"><span class="t">Canyon swing <span class="tag go">adrenaline</span></span><div class="d">Grindelwald glacier gorge.</div></label><div class="price">$180<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-ks" data-bucket="food" data-cost="35" data-name="Kleine Scheidegg lunch"><label for="o-ks"><span class="t">Lunch at Kleine Scheidegg</span><div class="d">Mountain-station prices; bring Coop snacks to offset.</div></label><div class="price">$35<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d26">
+      <div class="day-head"><div class="num">26<small>SAT</small></div><div><h3>Lake day, or gorge-and-caves day</h3><div class="where">Grindelwald · last full day · three versions</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Three versions</h4>
+          <ul class="tl">
+            <li class="flex"><time>1</time><p><b>Oeschinensee.</b> Train to Kandersteg (~1 h 45), gondola, 20-min walk to the lake. Heuberg loop above it (2–3 h, ledges, big drops). Mountain coaster, rowboats. Full day.</p></li>
+            <li class="flex"><time>2</time><p><b>Pfingstegg + Gletscherschlucht.</b> Both in the village. Cable car, toboggan, Fly Line, gorge catwalks. Half day after a lazy morning.</p></li>
+            <li class="flex"><time>3</time><p><b>St. Beatus Caves + Harder Kulm.</b> Train to Interlaken, bus along Lake Thun to the caves, back for the funicular and sunset over both lakes. Leisurely.</p></li>
+            <li class="flex"><time>evening</time><p>Last night — dinner out in Grindelwald. Pack; checkout is 10 am.</p></li>
+          </ul>
+          <div class="heads-up red"><b>Hardergrat, from the list:</b> not the full ridge (see the Ideas page). Lombachalp → Augstmatthorn and back, 4–5 h, is the version to do if the group wants a big morning instead of version 3.</div>
+          <div class="swap"><b>Swap:</b> nothing says everyone does the same thing. Two cars of the same train split at Interlaken: one group to Kandersteg, one to the caves, everyone back for dinner.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt" data-group="sat"><input type="checkbox" id="o-oesch" data-bucket="do" data-cost="100" data-name="Oeschinensee (train + gondola)"><label for="o-oesch"><span class="t">1: Oeschinensee <span class="tag pick">pick one</span></span><div class="d">Train to Kandersteg + gondola. Nearly free with the BO Pass; half with Half Fare.</div></label><div class="price">$100<small>est.</small></div></div>
+          <div class="opt" data-group="sat"><input type="checkbox" id="o-pfing" data-bucket="do" data-cost="80" data-name="Pfingstegg + gorge"><label for="o-pfing"><span class="t">2: Pfingstegg + Gletscherschlucht <span class="tag pick">pick one</span></span><div class="d">Cable car, toboggan, Fly Line, gorge entry.</div></label><div class="price">$80<small>est.</small></div></div>
+          <div class="opt" data-group="sat"><input type="checkbox" id="o-beatus" data-bucket="do" data-cost="110" data-name="St. Beatus + Harder Kulm"><label for="o-beatus"><span class="t">3: Caves + Harder Kulm <span class="tag pick">pick one</span></span><div class="d">Trains, bus, cave entry, funicular (half with either pass).</div></label><div class="price">$110<small>est.</small></div></div>
+          <div class="opt" data-group="sat"><input type="checkbox" id="o-augst" data-bucket="do" data-cost="20" data-name="Augstmatthorn ridge hike"><label for="o-augst"><span class="t">4: Augstmatthorn ridge <span class="tag pick">pick one</span></span><div class="d">Bus to Lombachalp and back. Hard.</div></label><div class="price">$20<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-sky" data-bucket="do" data-cost="540" data-name="Skydiving (Interlaken)"><label for="o-sky"><span class="t">Skydiving over the Alps <span class="tag go">adrenaline</span></span><div class="d">Half day in Interlaken, weather-dependent. Pairs with version 3.</div></label><div class="price">$540<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-lastdin" data-bucket="food" data-cost="60" data-name="Last-night dinner out"><label for="o-lastdin"><span class="t">Last-night dinner out</span><div class="d">Grindelwald restaurant, mains CHF 30–45.</div></label><div class="price">$60<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d27">
+      <div class="day-head"><div class="num">27<small>SUN</small></div><div><h3>Down to Zürich</h3><div class="where">Grindelwald → Interlaken → Bern → Zürich · sleep at <b>Zürich hotel</b></div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>10:00 am</time><p>Checkout. Grindelwald → Interlaken Ost → Bern → Zürich HB, ~3 h.</p></li>
+            <li class="flex"><time>~1:30</time><p>From HB: S-Bahn to Opfikon (11 min) or tram 10 to Glattpark; short walk to the hotel. Drop bags. <span class="note">Sunday again: shops closed except the station Coop and Migros.</span></p></li>
+            <li class="flex"><time>afternoon</time><p>Back into the city if there's energy: Lindenhof, Grossmünster, the lake at Bürkliplatz.</p></li>
+            <li class="flex"><time>evening</time><p>Fondue in Niederdorf. Last S-Bahn/tram ~12:30 am — no night network on a Sunday.</p></li>
+          </ul>
+          <div class="swap"><b>Swap:</b> stop in Bern for two hours on the way (old town is a UNESCO site, bags fit in station lockers) and arrive Zürich for dinner instead.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt fixed"><input type="checkbox" id="o-kameha" data-bucket="travel" data-cost="204" data-name="Zürich hotel share" checked disabled><label for="o-kameha"><span class="t">Zürich hotel, 2 nights <span class="tag all">everyone</span></span><div class="d">$204 × 2 nights per room, split evenly: $204 each at 3 rooms, $272 at 4. Set the room count on the Costs page. Who rooms with whom is TBD.</div></label><div class="price" id="kameha-price">$204</div></div>
+          <div class="opt"><input type="checkbox" id="o-zvv" data-bucket="travel" data-cost="24" data-name="Zürich transit (2 × 24h)"><label for="o-zvv"><span class="t">Zürich transit, 2 days</span><div class="d">24-hour ZVV ticket, ~CHF 9 each. <a href="https://www.zvv.ch/en" target="_blank" rel="noopener">zvv.ch</a></div></label><div class="price">$24<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-fondue" data-bucket="food" data-cost="60" data-name="Sunday dinner in Zürich"><label for="o-fondue"><span class="t">Fondue night</span><div class="d">CHF 35–50 for a main.</div></label><div class="price">$60<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d28">
+      <div class="day-head"><div class="num">28<small>MON</small></div><div><h3>A slow day in Zürich</h3><div class="where">Zürich · sleep at Zürich hotel</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan — suggestion: stay in the city</h4>
+          <ul class="tl">
+            <li class="flex"><time>morning</time><p>Tram or S-Bahn to HB. Old town walk: Bahnhofstrasse → Lindenhof → St. Peter → Fraumünster → Grossmünster → Niederdorf.</p></li>
+            <li class="flex"><time>lunch</time><p>Zeughauskeller or Haus Hiltl.</p></li>
+            <li class="flex"><time>afternoon</time><p>Lake — baths if warm, ferry to Zürichhorn if not. Museums are closed Mondays.</p></li>
+            <li class="flex"><time>evening</time><p>Zürich West — Frau Gerolds Garten, Im Viadukt. Back by midnight; early-ish night for the flight.</p></li>
+          </ul>
+          <div class="swap"><b>Swap:</b> Rhine Falls in the morning (~1 h by train), city in the afternoon. Or Uetliberg for one last view. Lucerne is a long round trip for the day before the flight.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt"><input type="checkbox" id="o-zfood" data-bucket="food" data-cost="90" data-name="Zürich Monday food + drinks"><label for="o-zfood"><span class="t">Monday lunch, drinks, dinner</span><div class="d">Zürich prices; $90 is a normal day.</div></label><div class="price">$90<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-rhine" data-bucket="do" data-cost="30" data-name="Rhine Falls half day"><label for="o-rhine"><span class="t">Rhine Falls half day</span><div class="d">Train + viewing platform. Half with Half Fare.</div></label><div class="price">$30<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-uetli" data-bucket="do" data-cost="15" data-name="Uetliberg"><label for="o-uetli"><span class="t">Uetliberg</span><div class="d">Train from HB, 20 min.</div></label><div class="price">$15<small>est.</small></div></div>
+          <div class="opt"><input type="checkbox" id="o-bath" data-bucket="do" data-cost="10" data-name="Lake baths"><label for="o-bath"><span class="t">Lake baths</span><div class="d">CHF 8. Weather permitting.</div></label><div class="price">$10<small>est.</small></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="day" id="d29">
+      <div class="day-head"><div class="num">29<small>TUE</small></div><div><h3>Home</h3><div class="where">Zürich → Washington Dulles → Tampa</div></div></div>
+      <div class="day-body">
+        <div class="plan"><h4>Plan</h4>
+          <ul class="tl">
+            <li><time>8:30 am</time><p>Leave the hotel. Tram 10 from Glattpark to the airport is 9 minutes; the hotel also runs a shuttle every 30 min from 6:30 am. US-bound flights get extra screening — three hours is right.</p></li>
+            <li><time>11:55 am</time><p>UA 53 to Washington Dulles, 9h 30m, lands 3:25 pm</p></li>
+            <li><time>5:49 pm</time><p>UA 1140 to Tampa, lands 8:23 pm</p></li>
+          </ul>
+          <div class="heads-up"><b>The shared calendar says "7 am flight." It's 11:55.</b> No early alarm needed.</div>
+        </div>
+        <div class="opts"><h4>Tick to add to your estimate</h4>
+          <div class="opt"><input type="checkbox" id="o-shuttle" data-bucket="travel" data-cost="0" data-name="Hotel airport shuttle"><label for="o-shuttle"><span class="t">Hotel airport shuttle</span><div class="d">Free; ask at check-in to book the 8:30 run for six.</div></label><div class="price">$0</div></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+</div>
+
+<!-- ============ PAGE 3: COSTS ============ -->
+<div class="panel" id="p-costs">
+<section class="block" id="cost">
+  <div class="wrap">
+    <h2>What it costs</h2>
+    <p class="intro">Three buckets: getting there &amp; sleeping (mostly booked), doing things (whatever you tick), and eating &amp; drinking (a baseline that only rises if your ticked food items go above it). Booked costs are real. Everything else is an estimate in US dollars at roughly 1 CHF ≈ $1.20 and 1 € ≈ $1.10 — budget numbers, not quotes. Ticks aren't saved when you close the page; screenshot your total.</p>
+    <div class="costgrid">
+      <div class="card">
+        <h3>Booked, whole group</h3>
+        <table>
+          <tr><th>Item</th><th class="n">Group</th><th class="n">Each</th></tr>
+          <tr><td>Flights (paid individually)</td><td class="n">$7,200</td><td class="n">$1,200</td></tr>
+          <tr><td>WunderLocke, 3 nights</td><td class="n">$2,200</td><td class="n">$366.67</td></tr>
+          <tr><td>Grindelwald house, 4 nights</td><td class="n">$2,567</td><td class="n">$427.83</td></tr>
+          <tr><td id="g-kameha-label">Zürich hotel — 3 rooms × 2 nights</td><td class="n" id="g-kameha">$1,224</td><td class="n" id="g-kameha-each">$204</td></tr>
+          <tr class="total"><td>Booked so far</td><td class="n" id="g-total">$13,191</td><td class="n" id="g-each">$2,198.50</td></tr>
+        </table>
+        <p class="fine">Zürich hotel uses the room count chosen in "Your estimate" (3 or 4 — still being decided). "Each" is an even six-way split; the actual room split is TBD.</p>
+        <p class="fine">Not in the group number yet: Munich→Zürich train (~$60 each, everyone) and whichever Swiss pass option each person picks (~$200–400). With those, expect roughly <b>$14,700–16,400 for the group</b> before food, beer, and excursions.</p>
+      </div>
+      <div class="card">
+        <h3>Your estimate</h3>
+        <div class="who">
+          <label for="rooms">Zürich hotel rooms</label>
+          <select id="rooms">
+            <option value="204">3 rooms — $204 each</option>
+            <option value="272">4 rooms — $272 each</option>
+          </select>
+        </div>
+        <div class="big" id="total">$0<small id="totalsub">three buckets, added up</small></div>
+
+        <div class="bucket">
+          <div class="bh"><span>Getting there &amp; sleeping</span><b id="sub-travel">$0</b></div>
+          <ul class="picked" id="list-travel"></ul>
+        </div>
+        <div class="bucket">
+          <div class="bh"><span>Doing things</span><b id="sub-do">$0</b></div>
+          <ul class="picked" id="list-do"></ul>
+          <p class="empty" id="empty-do">Nothing ticked yet — tick boxes on the Ideas or Plan pages.</p>
+        </div>
+        <div class="bucket">
+          <div class="bh"><span>Eating &amp; drinking</span><b id="sub-food">$0</b></div>
+          <div class="who food-base">
+            <label for="foodbase">Baseline</label>
+            <select id="foodbase">
+              <option value="400">$400 · light ($40/day)</option>
+              <option value="550" selected>$550 · normal ($55/day)</option>
+              <option value="750">$750 · generous ($75/day)</option>
+            </select>
+          </div>
+          <p class="fine" id="food-note"></p>
+          <ul class="picked" id="list-food"></ul>
+        </div>
+
+        <div class="btnrow">
+          <button class="b primary" id="btn-rec">Tick a middle-of-the-road set</button>
+          <button class="b" id="btn-clear">Clear options</button>
+          <button class="b" id="btn-copy">Copy my picks</button>
+          <button class="b" id="btn-plan">Go to the plan</button>
+        </div>
+        <p class="fine">"Copy my picks" puts a text summary on your clipboard to paste into the group chat. "Middle of the road" = Half Fare Card, Munich transit, Oktoberfest day, First + Waldspitz, Männlichen/Eiger Trail, Oeschinensee, groceries, and a normal food budget each day. No adrenaline sports — add those yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="questions">
+  <div class="wrap">
+    <h2>Still open</h2>
+    <ul class="qs">
+      <li><b>Zürich hotel rooms.</b> 3 or 4, and who's in which — currently TBD.</li>
+      <li><b>Attire.</b> Confirm all six reservations at Bavarian Outfitters, the tier/price, Monday opening time, and whether a Tuesday-morning return counts as one day.</li>
+      <li><b>Pass choice.</b> Each person: no pass / Half Fare Card / Berner Oberland Pass, by about Sept 12 so Swiss legs can be bought.</li>
+      <li><b>Munich → Zürich train.</b> One reservation for six on bahn.de; fares rise weekly.</li>
+      <li><b>Eiger day.</b> Jungfraujoch, Eiger Trail, or Lauterbrunnen — can be a split.</li>
+      <li><b>Saturday.</b> Oeschinensee, Pfingstegg, caves + Harder Kulm, or the Augstmatthorn ridge.</li>
+      <li><b>Adrenaline.</b> Who's paragliding (book ~Sept 17), who's canyon-swinging, anyone skydiving?</li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="links">
+  <div class="wrap">
+    <h2>Links in one place</h2>
+    <ul class="links">
+      <li><a href="https://www.google.com/maps/@47.3438227,8.3489699,8z/data=!4m2!11m1!2shzgvcN2gMJhcQplF3QEmfw?entry=ttu" target="_blank" rel="noopener">The group's Google Maps list</a></li>
+      <li><a href="https://www.united.com" target="_blank" rel="noopener">United — reservation</a></li>
+      <li><a href="https://www.lockeliving.com/en/munich/wunderlocke" target="_blank" rel="noopener">WunderLocke, Munich</a></li>
+      <li><a href="https://www.airbnb.com/rooms/1044812419398779615?adults=6" target="_blank" rel="noopener">Grindelwald house — Airbnb listing</a></li>
+      <li><a href="https://bavarian-outfitters.de" target="_blank" rel="noopener">Bavarian Outfitters (attire)</a></li>
+      <li><a href="https://www.oktoberfest.de/en" target="_blank" rel="noopener">Oktoberfest official site</a></li>
+      <li><a href="https://www.kz-gedenkstaette-dachau.de/en/" target="_blank" rel="noopener">Dachau Memorial Site</a></li>
+      <li><a href="https://www.mvv-muenchen.de/en" target="_blank" rel="noopener">Munich transit (MVV)</a></li>
+      <li><a href="https://www.bahn.de/en" target="_blank" rel="noopener">Deutsche Bahn — Munich→Zürich tickets</a></li>
+      <li><a href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB — Swiss trains (get the app)</a></li>
+      <li><a href="https://www.swissrailways.com" target="_blank" rel="noopener">Swiss Half Fare Card / passes (official shop)</a></li>
+      <li><a href="https://www.berneseoberlandpass.ch" target="_blank" rel="noopener">Berner Oberland Pass</a></li>
+      <li><a href="https://www.jungfrau.ch/en-gb/" target="_blank" rel="noopener">Jungfrau Railways — First, Männlichen, Jungfraujoch, webcams</a></li>
+      <li><a href="https://www.myswissalps.com/activity/jungfraujoch/" target="_blank" rel="noopener">Jungfraujoch price guide by pass</a></li>
+      <li><a href="https://www.getyourguide.com/interlaken-l793/paragliding-tc90/" target="_blank" rel="noopener">Paragliding — compare operators</a></li>
+      <li><a href="https://www.getyourguide.com/grindelwald-l1613/sky-diving-tc87/" target="_blank" rel="noopener">Skydiving, canyon swing — compare</a></li>
+      <li><a href="https://www.oeschinensee.ch" target="_blank" rel="noopener">Oeschinensee</a></li>
+      <li><a href="https://www.pfingstegg.ch" target="_blank" rel="noopener">Pfingstegg</a></li>
+      <li><a href="https://www.beatushoehlen.swiss" target="_blank" rel="noopener">St. Beatus Caves</a></li>
+      <li><a href="https://www.meteoswiss.admin.ch" target="_blank" rel="noopener">MeteoSwiss (weather)</a></li>
+      <li><a href="https://www.kamehagrandzuerich.com/en/" target="_blank" rel="noopener">Zürich hotel — Kameha Grand</a></li>
+      <li><a href="https://www.zvv.ch/en" target="_blank" rel="noopener">Zürich transit (ZVV)</a></li>
+      <li><a href="https://allianz-arena.com/en/events" target="_blank" rel="noopener">Allianz Arena tours</a></li>
+    </ul>
+  </div>
+</section>
+</div>
+
+<!-- ============ PAGE 4: PACKING ============ -->
+<div class="panel" id="p-pack">
+<section class="block" id="packing">
+  <div class="wrap">
+    <h2>What to pack</h2>
+    <p class="intro">Three climates in ten days. Grindelwald village: 5–15 °C, near freezing up high. Munich and Zürich: 8–19 °C. Expect one rainy day. Boxes are a personal checklist and don't save.</p>
+    <div class="packgrid">
+    <div class="pack">
+      <h3>Documents &amp; money</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Passport</span><small>Valid 3+ months past Sept 29. Photo of it on your phone.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">United app</span><small>Has the booking. Munich leg is Lufthansa.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Credit card</span><small>No foreign-transaction fee. Tell the bank.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Cash</span><small>Euros for Oktoberfest, francs for huts. Small notes.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Booking confirmations</span><small>WunderLocke B86179505, Airbnb, Zürich hotel.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Travel insurance</span><small>Mountain rescue in Switzerland isn't free.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Clothes</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Rain shell</span><small>Hooded, packable. Not optional.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Warm mid-layer</span><small>Fleece or light down. Mornings above the village.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">2–3 hiking tops</span><small>Quick-dry.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Hiking pants or leggings</span></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Jeans or trousers</span><small>For city days.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">One nice outfit</span><small>Zürich dinners, the hotel.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Hat &amp; light gloves</span><small>Jungfraujoch and Faulhorn are cold in sun.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Sunglasses &amp; sunscreen</span><small>Stronger sun at altitude.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Swimsuit</span><small>Zürich lake or Thermalbad.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Wool hiking socks</span></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Shoes</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Hiking shoes or boots</span><small>Broken in, real tread. Trails are rocky.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">All-day city shoes</span><small>Ten hours standing at Oktoberfest.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Dinner shoes</span><small>Zürich. Clean trail runners can double.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Gear</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Plug adapter</span><small>Germany type F, Switzerland type J. Type C fits both.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Power bank</span><small>Cold and cameras kill batteries.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Day pack, 15–25 L</span><small>Water, layers, snacks.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Water bottle</span><small>Swiss tap water is excellent; bottled costs.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Blister kit &amp; meds</span><small>Prescriptions in original packaging.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Earplugs</span><small>Loft rooms and six in a house.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Offline maps + SBB app</span><small>Download before Grindelwald.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Small bag, under 3 L</span><small>Oktoberfest gates refuse larger bags.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Wearing lederhosen</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Confirm what's included</span><small>Usually lederhosen + shirt. Ask about socks and shoes.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Tall wool socks</span><small>If not included.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Brown leather shoes or boots</span><small>If not included.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Backup shirt</span><small>Plain white or checked.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Wearing a dirndl</h3>
+      <p class="fine">Apron bow: right = taken, left = single, center = not saying.</p>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Confirm what's included</span><small>Usually dirndl + apron. Ask about the blouse.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Flat or low shoes</span><small>All day on your feet.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Tights or stockings</span><small>Morning tents are cool.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Cardigan or fitted jacket</span><small>The walk over, and evening.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Small crossbody bag</span><small>Under 3 L for the gates.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Hair ties or pins</span><small>If you want braids.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Grindelwald house</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Slippers or thick socks</span><small>Wood floors, no shoes inside.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Cards or a small game</span><small>Evenings in.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Laundry plan</span><small>Ask the host about a washer. Day 25 or 26.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Leave at home</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Umbrella</span><small>The rain shell does the job.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Heavy jeans for hiking</span></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">A second pair of nice shoes</span></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Before we go</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Book Munich → Zürich train</span><small>bahn.de, one booking for six, seats reserved. Now — fares climb weekly.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Pick a Swiss pass option</span><small>No pass / Half Fare Card / Berner Oberland Pass. By Sept 12.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Confirm attire rental</span><small>All six reservations, tier, Monday opening time, return rules.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Book paragliding / canyon swing / skydive</span><small>Whoever's in. By Sept 17 for six slots.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Settle Zürich hotel room count</span><small>3 or 4, and who's where.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Jungfraujoch seat reservation</span><small>Only if going. CHF 10, mandatory in September, book a few days out once the forecast is clear.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Phone data</span><small>An eSIM or plan that covers Switzerland — it isn't in the EU, so EU roaming often doesn't apply.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Bank notice &amp; travel insurance</span><small>Card travel notice; insurance that covers hiking and mountain rescue.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Check in online</span><small>United, the night before Sept 19.</small></span></label></li>
+      </ul>
+    </div>
+    <div class="pack">
+      <h3>Good to know</h3>
+      <ul class="pl">
+        <li><label><input type="checkbox"> <span><span class="pn">Emergency: 112</span><small>Works in Germany and Switzerland. Swiss mountain rescue (Rega): 1414.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Sundays</span><small>Shops close in both countries. We arrive in Munich and Zürich on Sundays.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Money</span><small>Euros in Germany, francs in Switzerland. Cards work almost everywhere; huts and Wiesn tables often don't.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Tipping</span><small>Round up or 5–10%. Say the total when paying rather than leaving cash on the table.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Water</span><small>Tap water is safe and good everywhere; restaurants charge for bottled.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Meeting spot</span><small>Oktoberfest: the Bavaria statue. Phone signal drops inside tents.</small></span></label></li>
+        <li><label><input type="checkbox"> <span><span class="pn">Time zone</span><small>Central European Summer Time, 6 hours ahead of Tampa.</small></span></label></li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<button class="tally" id="tally" type="button"><span>Your estimate</span><b id="tally-amt">$0</b><span id="tally-n">0 picks</span><span>· see Costs</span></button>
+
+<footer><div class="wrap">Built Sept 5, 2026 from the group's bookings and map list. Prices are estimates from public sources at that date; check the operator before booking. Ticks aren't saved.</div></footer>
+
+<script>
+(function(){
+  // tabs
+  const tabs = Array.from(document.querySelectorAll('.tabs button'));
+  const panels = {ideas:document.getElementById('p-ideas'), plan:document.getElementById('p-plan'), costs:document.getElementById('p-costs'), pack:document.getElementById('p-pack')};
+  function setHash(x){ try{ history.replaceState(null,'','#'+x); }catch(e){} }
+  function show(name, scrollTop){
+    tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'));
+    Object.keys(panels).forEach(k => panels[k].classList.toggle('on', k === name));
+    if (scrollTop) document.querySelector('.tabs').scrollIntoView();
+    if (typeof update === 'function') update();
+  }
+  tabs.forEach(t => t.addEventListener('click', () => { show(t.dataset.tab, true); setHash(t.dataset.tab); }));
+  function route(){
+    const h = location.hash.replace('#','');
+    if (h === 'plan' || h === 'costs' || h === 'ideas' || h === 'pack') show(h, false);
+    else if (/^d\d\d$/.test(h) || h === 'stays') { show('plan', false); const el = document.getElementById(h); if (el) el.scrollIntoView(); }
+    else if (h === 'packing') show('pack', false);
+    else if (h === 'cost' || h === 'questions' || h === 'links') { show('costs', false); const el = document.getElementById(h); if (el) el.scrollIntoView(); }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+  document.getElementById('btn-plan').addEventListener('click', () => { show('plan', true); setHash('plan'); });
+
+  // costs
+  const boxes = Array.from(document.querySelectorAll('.opt input[type=checkbox], .idea input.extra'));
+  const proxies = Array.from(document.querySelectorAll('.idea input.proxy'));
+  const tally = document.getElementById('tally');
+  const rooms = document.getElementById('rooms');
+  const totalEl = document.getElementById('total');
+  const sub = document.getElementById('totalsub');
+  const kamehaPrice = document.getElementById('kameha-price');
+  const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+
+  boxes.forEach(b => {
+    b.addEventListener('change', () => {
+      const grp = el => { const w = el.closest('.opt'); return w ? w.dataset.group : null; };
+      const g = grp(b);
+      if (g && b.checked) boxes.forEach(o => { if (o !== b && grp(o) === g) o.checked = false; });
+      update();
+    });
+  });
+  rooms.addEventListener('change', update);
+  proxies.forEach(px => {
+    px.addEventListener('change', () => {
+      const t = document.getElementById(px.dataset.opt);
+      if (!t) return;
+      if (t.checked !== px.checked) { t.checked = px.checked; t.dispatchEvent(new Event('change')); } else update();
+    });
+  });
+  tally.addEventListener('click', () => { show('costs', true); setHash('costs'); });
+
+  const foodbase = document.getElementById('foodbase');
+  foodbase.addEventListener('change', update);
+  function update(){
+    const share = parseFloat(rooms.value);
+    const base = parseFloat(foodbase.value);
+    const sums = {travel:0, do:0, food:0};
+    const lists = {travel:[], do:[], food:[]};
+    let picks = 0;
+    boxes.forEach(b => {
+      if (!b.checked) return;
+      let c = parseFloat(b.dataset.cost) || 0;
+      if (b.id === 'o-kameha') c = share;
+      const k = b.dataset.bucket || 'do';
+      sums[k] += c;
+      lists[k].push([b.dataset.name, b.dataset.note ? b.dataset.note : c]);
+      if (!b.disabled) picks++;
+    });
+    const foodUsed = Math.max(base, sums.food);
+    const total = sums.travel + sums.do + foodUsed;
+    kamehaPrice.textContent = fmt(share);
+    const nRooms = share === 272 ? 4 : 3, gK = nRooms * 408, gT = 7200 + 2200 + 2567 + gK;
+    document.getElementById('g-kameha-label').textContent = 'Zürich hotel — ' + nRooms + ' rooms × 2 nights';
+    document.getElementById('g-kameha').textContent = fmt(gK);
+    document.getElementById('g-kameha-each').textContent = fmt(share);
+    document.getElementById('g-total').textContent = fmt(gT);
+    document.getElementById('g-each').textContent = '$' + (gT / 6).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    totalEl.firstChild.textContent = fmt(total);
+    sub.textContent = fmt(sums.travel) + ' travel + ' + fmt(sums.do) + ' doing + ' + fmt(foodUsed) + ' eating';
+    document.getElementById('sub-travel').textContent = fmt(sums.travel);
+    document.getElementById('sub-do').textContent = fmt(sums.do);
+    document.getElementById('sub-food').textContent = fmt(foodUsed);
+    document.getElementById('food-note').textContent = sums.food > base
+      ? 'Ticked food and drink (' + fmt(sums.food) + ') is above the baseline, so the bucket uses that.'
+      : 'Ticked food and drink (' + fmt(sums.food) + ') is under the baseline, so the bucket holds at ' + fmt(base) + '.';
+    ['travel','do','food'].forEach(k => {
+      const ul = document.getElementById('list-' + k); ul.innerHTML = '';
+      lists[k].forEach(([n,c]) => { const li = document.createElement('li'); li.innerHTML = '<span>' + n + '</span><span>' + (typeof c === 'number' ? fmt(c) : c) + '</span>'; ul.appendChild(li); });
+    });
+    document.getElementById('empty-do').style.display = lists.do.length ? 'none' : 'block';
+    proxies.forEach(px => { const t = document.getElementById(px.dataset.opt); if (t) px.checked = t.checked; });
+    document.getElementById('tally-amt').textContent = fmt(total);
+    document.getElementById('tally-n').textContent = picks + (picks === 1 ? ' pick' : ' picks');
+    const onCosts = panels.costs.classList.contains('on');
+    tally.classList.toggle('show', picks > 0 && !onCosts);
+  }
+
+  document.getElementById('btn-copy').addEventListener('click', () => {
+    const share = parseFloat(rooms.value), base = parseFloat(foodbase.value);
+    const g = {travel:[], do:[], food:[]}, s = {travel:0, do:0, food:0};
+    boxes.forEach(b => { if (!b.checked) return; let c = parseFloat(b.dataset.cost) || 0; if (b.id === 'o-kameha') c = share; const k = b.dataset.bucket || 'do'; s[k] += c; g[k].push('  - ' + b.dataset.name + ' — ' + (b.dataset.note ? b.dataset.note : fmt(c))); });
+    const food = Math.max(base, s.food), total = s.travel + s.do + food;
+    const txt = ['My picks — Munich / Grindelwald / Zürich, Sept 19–29',
+      '', 'Getting there & sleeping: ' + fmt(s.travel), ...g.travel,
+      '', 'Doing things: ' + fmt(s.do), ...(g.do.length ? g.do : ['  (nothing ticked)']),
+      '', 'Eating & drinking: ' + fmt(food) + ' (baseline ' + fmt(base) + ', ticked ' + fmt(s.food) + ')', ...g.food,
+      '', 'Estimated total: ' + fmt(total), 'Zürich hotel at ' + (share === 272 ? 4 : 3) + ' rooms'].join('\n');
+    const done = () => { const b = document.getElementById('btn-copy'); const old = b.textContent; b.textContent = 'Copied'; setTimeout(() => b.textContent = old, 1500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, () => window.prompt('Copy this:', txt));
+    else window.prompt('Copy this:', txt);
+  });
+  document.getElementById('btn-clear').addEventListener('click', () => { boxes.forEach(b => { if (!b.disabled) b.checked = false; }); update(); });
+  document.getElementById('btn-rec').addEventListener('click', () => {
+    boxes.forEach(b => { if (!b.disabled) b.checked = false; });
+    ['o-mvv','o-sunbeer','o-wiesn','o-food22','o-half','o-groc','o-first','o-rosti','o-mann','o-ks','o-oesch','o-lastdin','o-zvv','o-fondue','o-zfood'].forEach(id => { const el = document.getElementById(id); if (el) el.checked = true; });
+    update();
+  });
+  update();
+})();
+</script>
+</body>
+</html>
