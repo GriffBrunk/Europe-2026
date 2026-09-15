@@ -998,19 +998,17 @@
   function show(name, scrollTop){
     tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'));
     Object.keys(panels).forEach(k => panels[k].classList.toggle('on', k === name));
-    if (scrollTop) document.querySelector('.tabs').scrollIntoView();
+    if (scrollTop && document.querySelector('.tabs').scrollIntoView) document.querySelector('.tabs').scrollIntoView();
     if (typeof update === 'function') update();
   }
   tabs.forEach(t => t.addEventListener('click', () => { show(t.dataset.tab, true); setHash(t.dataset.tab); }));
   function route(){
     const h = location.hash.replace('#','');
     if (h === 'plan' || h === 'costs' || h === 'ideas' || h === 'pack') show(h, false);
-    else if (/^d\d\d$/.test(h) || h === 'stays') { show('plan', false); const el = document.getElementById(h); if (el) el.scrollIntoView(); }
+    else if (/^d\d\d$/.test(h) || h === 'stays') { show('plan', false); const el = document.getElementById(h); if (el && el.scrollIntoView) el.scrollIntoView(); }
     else if (h === 'packing') show('pack', false);
-    else if (h === 'cost' || h === 'questions' || h === 'links') { show('costs', false); const el = document.getElementById(h); if (el) el.scrollIntoView(); }
+    else if (h === 'cost' || h === 'questions' || h === 'links') { show('costs', false); const el = document.getElementById(h); if (el && el.scrollIntoView) el.scrollIntoView(); }
   }
-  window.addEventListener('hashchange', route);
-  route();
   document.getElementById('btn-plan').addEventListener('click', () => { show('plan', true); setHash('plan'); });
 
   // costs
@@ -1107,6 +1105,8 @@
     update();
   });
   update();
+  window.addEventListener('hashchange', route);
+  route();
 })();
 </script>
 </body>
