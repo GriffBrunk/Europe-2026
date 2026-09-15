@@ -520,7 +520,7 @@
           </ul>
         </div>
         <div class="opts"><h4>Tick to add to your estimate</h4>
-          <div class="opt fixed"><input type="checkbox" id="o-flight" data-bucket="travel" data-cost="1200" data-name="Flights (round trip)" checked disabled><label for="o-flight"><span class="t">Round-trip flights <span class="tag all">everyone</span></span><div class="d">Already paid individually, ~$1,200 each.</div></label><div class="price">$1,200</div></div>
+          <p class="fine" style="margin:0">Flights were booked and paid individually (~$1,200 each) and aren't counted on the Costs page.</p>
         </div>
       </div>
     </article>
@@ -606,7 +606,7 @@
         </div>
         <div class="opts"><h4>Tick to add to your estimate</h4>
           <div class="opt fixed"><input type="checkbox" id="o-gw" data-bucket="travel" data-cost="427.83" data-name="Grindelwald house (4 nights)" checked disabled><label for="o-gw"><span class="t">Grindelwald house, 4 nights <span class="tag all">everyone</span></span><div class="d">$2,567 ÷ 6.</div></label><div class="price">$428</div></div>
-          <div class="opt fixed"><input type="checkbox" id="o-ec" data-bucket="travel" data-cost="100" data-name="Train Munich → Grindelwald" checked disabled><label for="o-ec"><span class="t">Train Munich → Grindelwald <span class="tag all">booked</span></span><div class="d">One bahn.de ticket for six, 1st class, 09:02 → 16:40, €479.94 total. Covers the Swiss legs too.</div></label><div class="price">$100</div></div>
+          <div class="opt fixed"><input type="checkbox" id="o-ec" data-bucket="travel" data-cost="95" data-name="Train Munich → Grindelwald" checked disabled><label for="o-ec"><span class="t">Train Munich → Grindelwald <span class="tag all">booked</span></span><div class="d">One bahn.de ticket for six, 1st class, 09:02 → 16:40, $570 total. Covers the Swiss legs too.</div></label><div class="price">$95</div></div>
           <div class="opt" data-group="pass"><input type="checkbox" id="o-none" data-bucket="travel" data-cost="106" data-name="Swiss trains, no pass (ZRH↔Grindelwald both ways)"><label for="o-none"><span class="t">Pay as you go <span class="tag pick">pick one</span></span><div class="d">Return train Grindelwald → Zürich at full fare (CHF 84.80), or less with an SBB Supersaver fare. The way in is on the bahn.de ticket.</div></label><div class="price">$106</div></div>
           <div class="opt" data-group="pass"><input type="checkbox" id="o-half" data-bucket="travel" data-cost="241" data-name="Swiss Half Fare Card + half-price trains"><label for="o-half"><span class="t">Half Fare Card <span class="tag pick">pick one</span></span><div class="d">Card $188 (CHF 150), then the return train at half ($53) and most lifts at half. Only pays off if you do four or more paid excursions — or Jungfraujoch. Nothing needs it until Thu 24th, so decide in Grindelwald on Wed night and buy online then (start date Sept 24). <a href="https://www.swissrailways.com/en/buy-swiss-half-fare-card" target="_blank" rel="noopener">buy in USD</a> · <a href="https://www.sbb.ch/en/offers/buy-swiss-half-fare-card" target="_blank" rel="noopener">or at sbb.ch</a></div></label><div class="price">$241</div></div>
           <div class="opt"><input type="checkbox" id="o-groc" data-bucket="food" data-cost="60" data-name="Groceries + house dinners"><label for="o-groc"><span class="t">Groceries for the house</span><div class="d">Coop run split six ways; breakfasts and two dinners in.</div></label><div class="price">$60<small>est.</small></div></div>
@@ -759,17 +759,17 @@
     <p class="intro">Three buckets: getting there &amp; sleeping (mostly booked), doing things (whatever you tick), and eating &amp; drinking (a baseline that only rises if your ticked food items go above it). Booked costs are real. Everything else is an estimate in US dollars at roughly 1 CHF ≈ $1.25 and 1 € ≈ $1.10 — budget numbers, not quotes. Ticks aren't saved when you close the page; screenshot your total.</p>
     <div class="costgrid">
       <div class="card">
-        <h3>Booked, whole group</h3>
+        <h3>Booked, shared costs</h3>
         <table>
           <tr><th>Item</th><th class="n">Group</th><th class="n">Each</th></tr>
-          <tr><td>Flights (paid individually)</td><td class="n">$7,200</td><td class="n">$1,200</td></tr>
-          <tr><td>WunderLocke, 3 nights</td><td class="n">$2,200</td><td class="n">$366.67</td></tr>
-          <tr><td>Grindelwald house, 4 nights</td><td class="n">$2,567</td><td class="n">$427.83</td></tr>
+          <tr><td>WunderLocke, 3 nights</td><td class="n">$2,200</td><td class="n">$367</td></tr>
+          <tr><td>Train Munich → Grindelwald</td><td class="n">$570</td><td class="n">$95</td></tr>
+          <tr><td>Grindelwald house, 4 nights</td><td class="n">$2,567</td><td class="n">$428</td></tr>
           <tr><td id="g-kameha-label">Zürich hotel — 3 rooms × 2 nights</td><td class="n" id="g-kameha">$1,224</td><td class="n" id="g-kameha-each">$204</td></tr>
-          <tr class="total"><td>Booked so far, each</td><td class="n"></td><td class="n" id="g-each">$2,198.50</td></tr>
+          <tr class="total"><td>Booked so far, each</td><td class="n"></td><td class="n" id="g-each">$1,094</td></tr>
         </table>
         <p class="fine">Zürich hotel uses the room count chosen in "Your estimate" (3 or 4 — still being decided). "Each" is an even six-way split; the actual room split is TBD.</p>
-        <p class="fine">Still to add per person: the Munich→Zürich train (~$60) and whichever Swiss pass option you pick (~$200–400). Both show in "Your estimate."</p>
+        <p class="fine">Flights aren't in this table — everyone booked and paid their own (~$1,200). Still to add per person: the return train from Grindelwald and, if you buy it, the Half Fare Card. Both show in "Your estimate."</p>
       </div>
       <div class="card">
         <h3>Your estimate</h3>
@@ -1065,7 +1065,7 @@
     document.getElementById('g-kameha-label').textContent = 'Zürich hotel — ' + nRooms + ' rooms × 2 nights';
     document.getElementById('g-kameha').textContent = fmt(gK);
     document.getElementById('g-kameha-each').textContent = fmt(share);
-    document.getElementById('g-each').textContent = '$' + ((7200 + 2200 + 2567 + gK) / 6).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    document.getElementById('g-each').textContent = fmt((2200 + 2567 + 570 + gK) / 6);
     totalEl.firstChild.textContent = fmt(total);
     sub.textContent = fmt(sums.travel) + ' travel + ' + fmt(sums.do) + ' doing + ' + fmt(foodUsed) + ' eating';
     document.getElementById('sub-travel').textContent = fmt(sums.travel);
